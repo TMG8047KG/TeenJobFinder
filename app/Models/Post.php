@@ -25,7 +25,7 @@ class Post extends Model
         'tag_id',
         'company_id',
     ];
-    public function comments(): HasMany
+    public function company(): HasMany
     {
         return $this->hasMany(Company::class);
     }
