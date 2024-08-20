@@ -1,21 +1,22 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Company;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/jobs', function () {
+    return view('jobs');
+})->name('jobs');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/profile', [UserController::class, 'index'])->name('profile');
+Route::get('/profile/login', [UserController::class, 'loginView']);
+Route::get('/profile/register', [UserController::class, 'registerView']);
 
-require __DIR__.'/auth.php';
+Route::post('/profile/login', [UserController::class, 'login']);
+Route::post('/profile/register', [UserController::class, 'register']);
+
