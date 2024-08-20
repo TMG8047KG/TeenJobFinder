@@ -25,7 +25,5 @@ class PostFactory extends Factory
             'tag_id' => Str::random(10),
             'company_id'=> Str::random(10),
         ];
-
-
     }
 }

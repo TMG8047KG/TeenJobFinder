@@ -6,7 +6,7 @@
             @csrf
             <div class="form-group mb-3">
                 <x-form.label for="username">Username</x-form.label>
-                <x-form.input name="username" placeholder="Toshko" :value="old('email')"/>
+                <x-form.input name="username" placeholder="Toshko e pich" :value="old('email')"/>
                 <x-form.error name="username"/>
             </div>
             <div class="form-group mb-3">
