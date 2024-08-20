@@ -18,4 +18,5 @@ Route::get('/profile/register', [UserController::class, 'registerView']);
 
 Route::post('/profile/login', [UserController::class, 'login']);
 Route::post('/profile/register', [UserController::class, 'register']);
+Route::post('/profile/logout', [UserController::class, 'logout']);
 

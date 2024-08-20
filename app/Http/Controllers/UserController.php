@@ -32,6 +32,7 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
         ]);
+        $data['role_id'] = 'user';
 
         $user = User::create($data);
 
@@ -55,5 +56,11 @@ class UserController extends Controller
         $request->session()->regenerate();
 
         return redirect('/profile');
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/');
     }
 }

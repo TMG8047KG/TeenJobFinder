@@ -1,9 +1,9 @@
 <div class="relative">
     <div class="fixed bottom-0 left-0 right-0 md:top-0">
         <nav class="bg-gray-400">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                 <div class="md:hidden w-full" id="navbar-solid-bg">
-                    <ul class="flex flex-row justify-center font-medium md:space-x-8">
+                    <ul class="flex flex-row justify-center font-medium space-x-6 md:space-x-8">
                         <x-nav-link route="home">
                             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none">
                                     <g fill="currentColor">
@@ -18,8 +18,16 @@
                                 </g>
                             </svg>
                         </x-nav-link>
-{{--                        <x-nav-link route="home">Create</x-nav-link>--}}
-{{--                        <x-nav-link route="home">Notifications</x-nav-link>--}}
+                        <x-nav-link route="home">
+                            <svg fill="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" class="h-8 w-8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </x-nav-link>
+                        <x-nav-link route="home">
+                            <svg fill="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" class="h-8 w-8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                        </x-nav-link>
                         <x-nav-link route="profile">
                            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none">
                                 <g fill="currentColor">
