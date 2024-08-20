@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
-class Post extends Model
+class Permission extends Model
 {
     use HasFactory, Notifiable;
 
@@ -19,14 +18,7 @@ class Post extends Model
     protected $fillable = [
 
         'id',
-        'tittle',
-        'requirements',
-        'description',
-        'tag_id',
-        'company_id',
-    ];
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Company::class);
-    }
+        'user_id',
+        'post_id',
+       ];
 }
