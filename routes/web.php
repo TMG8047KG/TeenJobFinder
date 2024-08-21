@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Company;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,10 @@ Route::get('/jobs', function () {
     return view('jobs', ['jobs' => $jobs]);
 })->name('jobs');
 
-use App\Http\Controllers\UserController;
+Route::get('/jobs/{id}', function ($id) {
+      $job =  Job::find($id);
+    return view('job', ['job' => $job]);
+});
 
 Route::get('/profile_edit', function () {
     return view('profile_edit');

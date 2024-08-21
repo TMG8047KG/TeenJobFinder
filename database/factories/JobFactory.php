@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -20,8 +21,9 @@ class JobFactory extends Factory
     {
         return [
             'title' => fake()->jobTitle(),
-            'work-time' => '8 hours',
-            'salary' => fake()->numberBetween(1000, 10000),
+            'employer_id' => Employer::factory(),
+            'work-time' =>  fake()->numberBetween($min = 4, $max = 10),
+            'salary' => fake()->numberBetween(2500, 10000),
         ];
     }
 }
