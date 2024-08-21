@@ -26,24 +26,12 @@
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold px-2">Recommended Jobs</h4>
             <div class="flex space-x-4 overflow-x-auto w-full">
-                <div class="min-w-[200px] bg-white shadow-md rounded-xl p-4">
                     <x-recommended-job>Job Example 1</x-recommended-job>
-                </div>
-                <div class="min-w-[200px] bg-white shadow-md rounded-xl p-4">
                     <x-recommended-job>Job Example 2</x-recommended-job>
-                </div>
-                <div class="min-w-[200px] bg-white shadow-md rounded-xl p-4">
                     <x-recommended-job>Job Example 3</x-recommended-job>
-                </div>
-                <div class="min-w-[200px] bg-white shadow-md rounded-xl p-4">
                     <x-recommended-job>Job Example 4</x-recommended-job>
-                </div>
-                <div class="min-w-[200px] bg-white shadow-md rounded-xl p-4">
                     <x-recommended-job>Job Example 5</x-recommended-job>
-                </div>
-                <div class="min-w-[200px] bg-white shadow-md rounded-xl p-4">
                     <x-recommended-job>Job Example 6</x-recommended-job>
-                </div>
             </div>
         </div>
 
