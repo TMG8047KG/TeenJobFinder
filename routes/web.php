@@ -3,13 +3,18 @@
 use App\Http\Controllers\UserController;
 use App\Models\Company;
 use Illuminate\Support\Facades\Route;
+use App\Models\Job;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
 Route::get('/jobs', function () {
-    return view('jobs');
+    // Fetch all jobs from the database
+    $jobs = Job::all();
+
+    // Pass the jobs to the view
+    return view('jobs', ['jobs' => $jobs]);
 })->name('jobs');
 
 
