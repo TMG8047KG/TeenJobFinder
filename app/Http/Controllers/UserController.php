@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 
@@ -36,8 +37,8 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
         ]);
-        $data['role_id'] = 'user';
-        $data['bio']='user';
+        $data['company_id'] = 0;
+        $data['bio']='Info about you';
 
         $user = User::create($data);
 

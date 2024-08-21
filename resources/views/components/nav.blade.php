@@ -16,8 +16,8 @@
                             </svg>
                         </x-nav-link>
 
-                        <x-nav-link route="home">
-                            <svg class="h-8 w-8 text-gray-500" viewBox="0 0 24 24" fill="{{ request()->routeIs('home') ? 'currentColor' : 'none' }}" stroke="currentColor">
+                        <x-nav-link route="post.options">
+                            <svg class="h-8 w-8 text-gray-500" viewBox="0 0 24 24" fill="{{ request()->routeIs('post.options') ? 'currentColor' : 'none' }}" stroke="currentColor">
                                 <path d="M12 4v16m-8-8h16" />
                             </svg>
                         </x-nav-link>

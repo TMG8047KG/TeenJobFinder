@@ -1,4 +1,5 @@
 <x-layout>
+    <x-nav/>
     <h1>
 
             <div class="space-y-8">

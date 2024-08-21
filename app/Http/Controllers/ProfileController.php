@@ -11,7 +11,6 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         return view('profile',['user'=>$user]);
-
     }
 }
 

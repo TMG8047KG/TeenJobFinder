@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Company;
@@ -37,4 +39,9 @@ Route::post('/profile/login', [UserController::class, 'login']);
 Route::post('/profile/register', [UserController::class, 'register']);
 Route::post('/profile/logout', [UserController::class, 'logout']);
 
+Route::get('/post/options', [PostController::class, 'index'])->name('post.options');
+Route::get('/post/create/user', [PostController::class, 'userForm']);
+Route::get('/post/create/company', [PostController::class, 'companyForm']);
+
+Route::get('/company/create', [CompanyController::class, 'index']);
 
