@@ -14,6 +14,7 @@
         @vite('resources/css/app.css')
     </head>
     <body>
+    <x-nav/>
         {{ $slot }}
     </body>
 </html>

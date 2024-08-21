@@ -1,5 +1,5 @@
 <x-layout>
-    <x-nav/>
+
     <div class="bg-gray-500 h-screen">
         <div class="h-full">
             <div class="text-center font-semibold text-2xl py-3">

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-nav/>
+
 
     <div class="flex flex-col h-screen max-h-screen overflow-y-auto">
         <div class="px-3 pt-6 pb-3 rounded-lg flex flex-col w-full">
