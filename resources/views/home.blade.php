@@ -1,8 +1,9 @@
 <x-layout>
-
-
     <div class="flex flex-col h-screen max-h-screen overflow-y-auto">
-        <div class="px-3 pt-6 pb-3 rounded-lg flex flex-col w-full">
+        <div class="px-3 pt-6 pb-3 rounded-lg flex items-center space-x-2 w-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-800" viewBox="-4 -1 20 20" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.5 3V2.5C5.5 1.39543 6.39543 0.5 7.5 0.5C8.60457 0.5 9.5 1.39543 9.5 2.5V3M0.5 11.5H14.5M1.5 3.5H13.5C14.0523 3.5 14.5 3.94772 14.5 4.5V13.5C14.5 14.0523 14.0523 14.5 13.5 14.5H1.5C0.947716 14.5 0.5 14.0523 0.5 13.5V4.5C0.5 3.94772 0.947715 3.5 1.5 3.5Z" />
+            </svg>
             <h4 class="text-black text-2xl font-semibold leading-tight truncate">Find your job</h4>
         </div>
 
@@ -26,12 +27,12 @@
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold px-2">Recommended Jobs</h4>
             <div class="flex space-x-4 overflow-x-auto w-full shadow">
-                    <x-recommended-job>Job Example 1</x-recommended-job>
-                    <x-recommended-job>Job Example 2</x-recommended-job>
-                    <x-recommended-job>Job Example 3</x-recommended-job>
-                    <x-recommended-job>Job Example 4</x-recommended-job>
-                    <x-recommended-job>Job Example 5</x-recommended-job>
-                    <x-recommended-job>Job Example 6</x-recommended-job>
+                <x-recommended-job>Job Example 1</x-recommended-job>
+                <x-recommended-job>Job Example 2</x-recommended-job>
+                <x-recommended-job>Job Example 3</x-recommended-job>
+                <x-recommended-job>Job Example 4</x-recommended-job>
+                <x-recommended-job>Job Example 5</x-recommended-job>
+                <x-recommended-job>Job Example 6</x-recommended-job>
             </div>
         </div>
 
