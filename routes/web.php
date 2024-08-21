@@ -12,9 +12,7 @@ Route::get('/jobs', function () {
     return view('jobs');
 })->name('jobs');
 
-Route::get('/profile_page', function () {
-    return view('profile_page');
-})->name('profile_page');
+
 
 Route::get('/profile', [UserController::class, 'index'])->name('profile');
 Route::get('/profile/login', [UserController::class, 'loginView']);
