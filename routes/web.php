@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Company;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
+use Illuminate\Support\Arr;
 
 Route::get('/', function () {
     return view('home');
