@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Company;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
@@ -18,8 +18,13 @@ Route::get('/jobs', function () {
     return view('jobs', ['jobs' => $jobs]);
 })->name('jobs');
 
+use App\Http\Controllers\UserController;
 
+Route::get('/profile_edit', function () {
+    return view('profile_edit');
+})->name('profile_edit');
 
+Route::get('/profile', [ProfileController::class, 'show'])->middleware('auth');
 Route::get('/profile', [UserController::class, 'index'])->name('profile');
 Route::get('/profile/login', [UserController::class, 'loginView']);
 Route::get('/profile/register', [UserController::class, 'registerView']);

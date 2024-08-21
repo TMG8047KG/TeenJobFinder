@@ -10,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
         if(Auth::check()){
             return view('profile');
         }else{
@@ -18,21 +19,25 @@ class UserController extends Controller
         }
     }
 
-    public function loginView(){
+    public function loginView(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
         return view('login');
     }
 
-    public function registerView(){
+    public function registerView(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
         return view('register');
     }
 
-    public function register(Request $request){
+    public function register(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
         $data = $request->validate([
             'username' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
         ]);
         $data['role_id'] = 'user';
+        $data['bio']='user';
 
         $user = User::create($data);
 
@@ -41,7 +46,11 @@ class UserController extends Controller
         return redirect('/profile');
     }
 
-    public function login(Request $request){
+    /**
+     * @throws ValidationException
+     */
+    public function login(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
         $data = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
@@ -58,9 +67,15 @@ class UserController extends Controller
         return redirect('/profile');
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
         Auth::logout();
         $request->session()->invalidate();
         return redirect('/');
+    }
+    public function profile(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
+        $user = Auth::user(); // Get the currently authenticated user
+        return view('profile', compact('user')); // Pass the user data to the profile view
     }
 }
