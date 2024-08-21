@@ -25,7 +25,7 @@
 
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold px-2">Recommended Jobs</h4>
-            <div class="flex space-x-4 overflow-x-auto w-full">
+            <div class="flex space-x-4 overflow-x-auto w-full shadow">
                     <x-recommended-job>Job Example 1</x-recommended-job>
                     <x-recommended-job>Job Example 2</x-recommended-job>
                     <x-recommended-job>Job Example 3</x-recommended-job>
