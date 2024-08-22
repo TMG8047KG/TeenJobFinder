@@ -12,15 +12,17 @@ use Illuminate\Notifications\Notifiable;
 class Company extends Model
 {
     use HasFactory,Notifiable;
+
+    //Do not touch (please)
     protected $fillable = [
-        'username',
+        'name',
         'address',
         'phone',
         'description',
         'email'
     ];
 
-    protected $table = 'company';
+    protected $table = 'companies';
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);

@@ -20,10 +20,10 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->name(),
-            'requirements' => fake()->text(),
+            'skills' => fake()->text(),
             'description'=> fake()->text(),
-            'tag_id' => Str::random(10),
-            'company_id'=> Str::random(10),
+            'user_id' => 1
+//            'tag_id' => Str::random(10),
         ];
     }
 }

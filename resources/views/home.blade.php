@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col h-screen max-h-screen overflow-y-auto">
+    <div x-data="{ filters: false }" @click.away="filters = false" class="flex flex-col h-screen max-h-screen overflow-y-auto">
         <div class="px-3 pt-6 pb-3 rounded-lg flex items-center space-x-2 w-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-800" viewBox="-4 -1 20 20" fill="none" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.5 3V2.5C5.5 1.39543 6.39543 0.5 7.5 0.5C8.60457 0.5 9.5 1.39543 9.5 2.5V3M0.5 11.5H14.5M1.5 3.5H13.5C14.0523 3.5 14.5 3.94772 14.5 4.5V13.5C14.5 14.0523 14.0523 14.5 13.5 14.5H1.5C0.947716 14.5 0.5 14.0523 0.5 13.5V4.5C0.5 3.94772 0.947715 3.5 1.5 3.5Z" />
@@ -16,8 +16,7 @@
                 </div>
                 <input type="text" class="bg-purple-white shadow rounded-xl border-0 p-3 w-full" placeholder="Search a job...">
             </div>
-            <button class="bg-gray-500 text-white rounded-xl px-4 py-2 shadow-md hover:bg-gray-600 transition duration-200"
-                    onclick="document.getElementById('sidebar').classList.remove('hidden');">
+            <button class="bg-gray-500 text-white rounded-xl px-4 py-2 shadow-md hover:bg-gray-600 transition duration-200" @click="filters = ! filters" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3.5 5.5A2.5 2.5 0 016 3h8a2.5 2.5 0 012.5 2.5v.607a1.5 1.5 0 01-.44 1.06l-4.56 4.557a1.5 1.5 0 00-.44 1.06V16.5a1.5 1.5 0 11-3 0v-3.716a1.5 1.5 0 00-.44-1.06l-4.56-4.557A1.5 1.5 0 013.5 6.107V5.5z" clip-rule="evenodd" />
                 </svg>
@@ -46,7 +45,7 @@
             </div>
         </div>
 
-        <div id="sidebar" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div x-show="filters" class="fixed inset-0 z-50 overflow-hidden hidden">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
             <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">

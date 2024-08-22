@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('skills');
             $table->text('description');
-            $table->foreignId("tag_id")->constrained("tags");
+            $table->text('work-time')->nullable();
+            $table->integer("salary")->nullable();
+//            $table->foreignId("tag_id")->constrained("tags");
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

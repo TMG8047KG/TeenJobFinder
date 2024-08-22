@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         @vite('resources/css/app.css')
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v3.x.x/dist/alpine.min.js" defer></script>
     </head>
     <body>
     <x-nav/>

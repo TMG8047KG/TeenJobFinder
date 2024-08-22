@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Company;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use Illuminate\Support\Arr;
@@ -15,7 +16,7 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     // Fetch all jobs from the database
-    $jobs = Job::all();
+    $jobs = Post::all();
 
     // Pass the jobs to the view
     return view('jobs', ['jobs' => $jobs]);
@@ -41,7 +42,6 @@ Route::get('/profile/register', [UserController::class, 'registerView']);
 
 Route::post('/profile/login', [UserController::class, 'login']);
 Route::post('/profile/register', [UserController::class, 'register'])->name('register');
-//Route::post('/profile/logout', [UserController::class, 'logout']);
 Route::post('/profile/logout', [UserController::class, 'logout'])->name('profile.logout');
 
 Route::get('/post/options', [PostController::class, 'index'])->name('post.options');

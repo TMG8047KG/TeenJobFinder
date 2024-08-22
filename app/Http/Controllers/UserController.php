@@ -38,8 +38,8 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
         ]);
-        $data['role_id'] = '0';
         $data['company_id'] = 0;
+        $data['photo'] = null;
         $data['bio']='Info about you';
 
         $user = User::create($data);
