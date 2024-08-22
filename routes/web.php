@@ -42,7 +42,7 @@ Route::get('/profile/login', [UserController::class, 'loginView']);
 Route::get('/profile/register', [UserController::class, 'registerView']);
 
 Route::post('/profile/login', [UserController::class, 'login']);
-Route::post('/profile/register', [UserController::class, 'register']);
+Route::post('/profile/register', [UserController::class, 'register'])->name('register');
 Route::post('/profile/logout', [UserController::class, 'logout']);
 
 Route::get('/post/options', [PostController::class, 'index'])->name('post.options');

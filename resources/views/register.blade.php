@@ -1,7 +1,7 @@
 <x-layout>
     <div class="bg-gray-800 h-screen">
 
-        <form class="h-full mx-auto content-center px-2 font-semibold" method="post" action="/profile/register">
+        <form class="h-full mx-auto content-center px-2 font-semibold" action="{{ route('register') }}" method="POST">
             <p class="text-2xl text-gray-200 w-full text-center">Register</p>
             @csrf
             <div class="form-group mb-3">
