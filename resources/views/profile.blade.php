@@ -4,7 +4,11 @@
             <div class="rounded overflow-hidden shadow-md bg-white">
                 <div class="absolute -mt-20 w-full flex justify-center">
                     <div class="h-32 w-32">
-                        <img src="https://randomuser.me/api/portraits/women/49.jpg" class="rounded-full object-cover h-full w-full shadow-md" />
+                        <!-- Display uploaded profile picture or default if not available -->
+                        <img
+                            src="{{ $user->photo ? asset('storage/' . $user->photo) : 'https://randomuser.me/api/portraits/women/49.jpg' }}"
+                            class="rounded-full object-cover h-full w-full shadow-md"
+                        />
                     </div>
                 </div>
                 <div class="px-6 mt-16">

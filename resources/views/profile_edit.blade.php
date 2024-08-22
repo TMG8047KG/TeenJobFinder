@@ -8,10 +8,22 @@
                 <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-blue-500 opacity-25"></div>
 
                 <!-- Profile Edit Form -->
-                <form method="POST" action="{{ route('profile.update') }}">
+                <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf
+                    <!-- Profile Picture -->
+                    <div class="mt-4 max-w-2xl text-sm text-gray-500">
+                        <label for="photo" class="block text-sm font-medium text-gray-700">Profile Picture:</label>
+                        <input type="file" id="photo" name="photo"
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                        @if($user->photo)
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $user->photo) }}" alt="Profile Picture" class="w-20 h-20 rounded-full">
+                            </div>
+                        @endif
+                    </div>
+
                     <!-- Username -->
-                    <div class="mt-1 max-w-2xl text-sm text-gray-500">
+                    <div class="mt-4 max-w-2xl text-sm text-gray-500">
                         <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
                         <input type="text" id="username" name="username" value="{{ $user->username }}"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />

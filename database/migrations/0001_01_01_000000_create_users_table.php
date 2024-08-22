@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(Company::class);
             $table->text('bio');
             $table->string('role_id');
+            $table->string('photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

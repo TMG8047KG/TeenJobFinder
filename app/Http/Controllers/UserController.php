@@ -96,14 +96,28 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:8|confirmed',
             'bio' => 'nullable|string|max:1000',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Validate photo
         ]);
 
         $user = Auth::user();
         $user->username = $request->username;
         $user->email = $request->email;
 
+        // If a new password is provided, hash and save it
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
+        }
+
+        // Handle profile photo upload
+        if ($request->hasFile('photo')) {
+            // Delete the old photo if exists
+            if ($user->photo && \Storage::exists('public/' . $user->photo)) {
+                \Storage::delete('public/' . $user->photo);
+            }
+
+            // Store the new photo
+            $path = $request->file('photo')->store('profile_photos', 'public');
+            $user->photo = $path;
         }
 
         $user->bio = $request->bio;
@@ -111,6 +125,8 @@ class UserController extends Controller
 
         return redirect()->route('profile')->with('status', 'Profile updated successfully!');
     }
+
+
 }
 
 
