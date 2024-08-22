@@ -29,6 +29,10 @@ Route::get('/jobs/{id}', function ($id) {
 //Route::get('/profile_edit', function () {
 //    return view('profile_edit');
 //})->name('profile_edit');
+Route::get('/notifications', function () {
+    return view('notifications');
+
+})->name('notifications');
 
 Route::get('/profile', [UserController::class, 'index'])->name('profile');
 
