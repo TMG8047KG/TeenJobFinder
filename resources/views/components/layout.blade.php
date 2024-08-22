@@ -13,7 +13,7 @@
         <!-- Styles -->
         @vite('resources/css/app.css')
 
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v3.x.x/dist/alpine.min.js" defer></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
     </head>
     <body>
     <x-nav/>

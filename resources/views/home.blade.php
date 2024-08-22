@@ -1,5 +1,5 @@
 <x-layout>
-    <div x-data="{ filters: false }" @click.away="filters = false" class="flex flex-col h-screen max-h-screen overflow-y-auto">
+    <div x-data="{ filters: false }" class="flex flex-col h-screen max-h-screen overflow-y-auto">
         <div class="px-3 pt-6 pb-3 rounded-lg flex items-center space-x-2 w-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-800" viewBox="-4 -1 20 20" fill="none" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.5 3V2.5C5.5 1.39543 6.39543 0.5 7.5 0.5C8.60457 0.5 9.5 1.39543 9.5 2.5V3M0.5 11.5H14.5M1.5 3.5H13.5C14.0523 3.5 14.5 3.94772 14.5 4.5V13.5C14.5 14.0523 14.0523 14.5 13.5 14.5H1.5C0.947716 14.5 0.5 14.0523 0.5 13.5V4.5C0.5 3.94772 0.947715 3.5 1.5 3.5Z" />
@@ -45,16 +45,15 @@
             </div>
         </div>
 
-        <div x-show="filters" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div x-show="filters" class="fixed inset-0 z-50 overflow-hidden">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
             <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-                <div class="w-screen max-w-md">
+                <div class="w-screen max-w-md" @click.away="filters = false">
                     <div class="h-full flex flex-col py-6 bg-white shadow-xl">
                         <div class="flex items-center justify-between px-4">
                             <h2 class="text-xl font-semibold text-black">Filters</h2>
-                            <button class="text-gray-500 hover:text-gray-700"
-                                    onclick="document.getElementById('sidebar').classList.add('hidden');">
+                            <button class="text-gray-500 hover:text-gray-700" @click="filters = ! filters">
                                 <span class="sr-only">Close</span>
                                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
