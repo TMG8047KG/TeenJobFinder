@@ -26,6 +26,12 @@ Route::get('/jobs/{id}', function ($id) {
     return view('job', ['job' => $job]);
 });
 
+Route::get('/notifications', function () {
+    return view('notifications');
+
+})->name('notifications');
+
+
 Route::get('/profile_edit', function () {
     return view('profile_edit');
 })->name('profile_edit');
