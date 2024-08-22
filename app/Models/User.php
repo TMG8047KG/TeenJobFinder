@@ -51,12 +51,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function company(): HasOne
     {
         return $this->hasOne(Company::class);
     }
 
-    public function posts(): HasMany{
+    public function posts(): HasMany
+    {
         return $this->hasMany(Post::class);
+    }
+
+    public function getPhotoUrlAttribute()
+    {
+        // If the user has a photo, return its URL. Otherwise, return the default photo URL.
+        return $this->photo ? asset('storage/' . $this->photo) : asset('images/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg');
     }
 }
