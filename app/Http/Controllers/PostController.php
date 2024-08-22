@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function companyForm()
     {
-        if(Auth::user()->company_id == null){
+        if(Auth::user()->company_id == 0){
             return redirect('/company/create');
         }
         return view('create.company');

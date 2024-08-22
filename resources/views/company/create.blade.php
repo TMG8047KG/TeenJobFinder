@@ -1,7 +1,7 @@
 <x-layout>
     <x-nav/>
     <div class="h-screen bg-gray-800">
-        <form class="h-full mx-auto content-center px-2 font-semibold">
+        <form class="h-full mx-auto content-center px-2 font-semibold" method="post" action="/company/create">
             <div class="form-group mb-2">
                 <x-form.label for="name">Company Name</x-form.label>
                 <x-form.input name="name" placeholder="RoseWorld"/>

@@ -46,9 +46,10 @@ Route::post('/profile/logout', [UserController::class, 'logout'])->name('profile
 
 Route::get('/post/options', [PostController::class, 'index'])->name('post.options');
 Route::get('/post/create/user', [PostController::class, 'userForm']);
-Route::get('/post/create/company', [PostController::class, 'companyForm']);
+Route::get('/post/create/offer', [PostController::class, 'companyForm']);
 
 Route::get('/company/create', [CompanyController::class, 'index']);
+Route::post('/company/create', [CompanyController::class, 'store']);
 
 Route::get('/profile_edit', [UserController::class, 'editProfileView'])->name('profile_edit');
 

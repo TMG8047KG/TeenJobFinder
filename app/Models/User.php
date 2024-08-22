@@ -63,6 +63,6 @@ class User extends Authenticatable
     public function getPhotoUrlAttribute()
     {
         // If the user has a photo, return its URL. Otherwise, return the default photo URL.
-        return $this->photo ? asset('storage/' . $this->photo) : asset('images/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg');
+        return $this->photo ? asset('storage/' . $this->photo) : asset('images/placeholder-avatar.jpg');
     }
 }
