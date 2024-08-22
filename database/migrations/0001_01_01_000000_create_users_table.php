@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignIdFor(Company::class);
             $table->text('bio');
+            $table->string('role_id');
             $table->rememberToken();
             $table->timestamps();
         });
