@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -19,7 +20,12 @@ class CompanyController extends Controller
             'description' => 'required',
         ]);
 
-        auth()->user()->company()->create($data);
+
+        //TODO:Look for possible change for better checking and updating
+        $user = Auth::user();
+        $company = $user->company()->create($data);
+        $user->company_id = $company->id;
+        $user->save();
 
         return redirect('/post/create/company');
     }

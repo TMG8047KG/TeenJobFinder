@@ -17,11 +17,12 @@ class Post extends Model
      *
      * @var array<int, string>
      */
+    protected $table = 'posts';
     protected $fillable = [
         'title',
-        'requirements',
+        'skills', //Required skills or the skills you have
         'description',
-        'tag_id',
+
     ];
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

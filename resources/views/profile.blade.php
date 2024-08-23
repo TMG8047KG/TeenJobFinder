@@ -14,10 +14,10 @@
                         {{ $user->bio }}
                     </div>
                     <div class="w-full flex justify-center pt-4 pb-4">
-                        <a href="{{ route('profile_edit') }}" class="mx-2">
+                        <a href="/profile/edit" class="mx-2">
                             <button class="bg-blue-500 text-white px-4 py-2 rounded">Edit Profile</button>
                         </a>
-                        <form method="POST" action="{{ route('profile.logout') }}">
+                        <form method="POST" action="/profile/logout">
                             @csrf
                             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
                         </form>

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Laravel\Prompts\text;
 
 class PostController extends Controller
 {
     public function index(){
         if(Auth::check()){
-            return view('create.options');
+            return view('post.options');
         }
         return redirect('/profile');
     }
@@ -22,19 +24,34 @@ class PostController extends Controller
         if(Auth::user()->company_id == 0){
             return redirect('/company/create');
         }
-        return view('create.company');
+        return view('post.company');
     }
     public function userForm()
     {
-        return view('create.user');
+        return view('post.user');
     }
 
     public function listing(Request $request){
-        //job listing
+        $data = $request->validate([
+           'title' => 'required',
+           'description' => 'required',
+        ]);
+        $data['skills'] = 'none';
+
+        auth()->user()->posts()->create($data);
+
+        return redirect('/jobs');
     }
 
     public function lookingForWork(Request $request){
-        //looking for work?
-    }
+        $data = $request->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+        ]);
+        $data['skills'] = 'none';
 
+        auth()->user()->posts()->create($data);
+
+        return redirect('/jobs');
+    }
 }

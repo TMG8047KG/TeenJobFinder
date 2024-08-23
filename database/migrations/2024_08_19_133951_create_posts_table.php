@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('skills');
+            $table->text('skills');
             $table->text('description');
             $table->text('work-time')->nullable();
             $table->integer("salary")->nullable();

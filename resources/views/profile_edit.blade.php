@@ -1,5 +1,4 @@
 <x-layout>
-    <body>
     <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
         <!-- Main Col -->
         <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
@@ -65,6 +64,4 @@
             <img src="https://source.unsplash.com/MP0IUfwrn0A" class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" alt="Profile image" />
         </div>
     </div>
-    </body>
-    <x-nav/>
 </x-layout>

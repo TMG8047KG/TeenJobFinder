@@ -22,7 +22,7 @@ class Company extends Model
         'email'
     ];
 
-    protected $table = 'companies';
+    protected $table = 'company';
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
