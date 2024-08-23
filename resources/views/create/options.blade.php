@@ -2,7 +2,7 @@
     <x-nav/>
     <div class="h-screen bg-white inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
         <div class="min-h-screen flex items-center justify-center w-full">
-            <div class="bg-white shadow-md rounded-lg px-8 py-6 max-w-md">
+            <div class="bg-white shadow-md rounded-lg px-8 py-6 max-w-md border border-gray-100">
                 <div class="h-full flex justify-center items-center text-center">
                     <div class="px-2 font-semibold">
                         <a class="text-3xl mb-4 block">Create a post</a>
