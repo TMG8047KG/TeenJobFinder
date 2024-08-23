@@ -21,6 +21,6 @@ class CompanyController extends Controller
 
         auth()->user()->company()->create($data);
 
-        return redirect('/post/create/offer');
+        return redirect('/post/create/company');
     }
 }
