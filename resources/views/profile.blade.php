@@ -1,13 +1,13 @@
 <x-layout>
     <div class="w-full h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
-        <div class="relative max-w-md w-full px-4">
+        <div class="relative mt-23 mb-31 max-w-sm mx-auto">
             <div class="rounded overflow-hidden shadow-md bg-white">
                 <div class="absolute -mt-16 w-full flex justify-center">
                     <div class="h-28 w-28">
                         <img src="{{ $user->photo_url }}" class="rounded-full object-cover h-full w-full shadow-md" />
                     </div>
                 </div>
-                <div class="px-5 mt-14">
+                <div class="px-5 mt-16">
                     <h1 class="font-bold text-2xl text-center mb-1">{{ $user->username }}</h1>
                     <div class="text-gray-800 text-sm text-center">{{ $user->email }}</div>
                     <div class="text-center text-gray-600 text-sm pt-2 font-normal">
@@ -39,7 +39,7 @@
                             </button>
                         </div>
 
-                        <div class="p-4 h-48 overflow-y-auto">
+                        <div class="p-3 h-40 overflow-y-auto">
                             <div x-show="tab === 'favorites'">
                                 <div class="bg-gray-100 p-3 rounded-md shadow-md mb-3">
                                     <div class="text-md font-semibold text-gray-800">Favorite Example</div>
