@@ -4,14 +4,9 @@
             <h2 class="text-5xl font-extrabold text-blue-700 mb-6 text-center">
                 Current Job
             </h2>
-
-            <div class="text-center text-3xl font-semibold text-blue-600 mb-6">
-                <strong>{{ $job['title'] }}</strong>
-            </div>
-
             <div class="px-4 py-4 bg-blue-100 border border-blue-300 rounded-lg mb-6">
                 <div class="text-2xl text-gray-700">
-                    <strong>Employer:</strong> {{ $job->user->name }}
+                    <strong>Employer:</strong> <strong class="text-center text-3xl font-semibold text-blue-700 mb-6">{{ $job['title'] }}</strong>
                 </div>
             </div>
 
