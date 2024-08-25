@@ -51,7 +51,7 @@
         </div>
 
         <!-- Filters Sidebar -->
-        <div x-show="filters" class="fixed inset-0 z-50 overflow-hidden">
+        <div x-show="filters" x-cloak class="fixed inset-0 z-50 overflow-hidden">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
             <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">

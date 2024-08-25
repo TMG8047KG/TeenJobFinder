@@ -1,19 +1,28 @@
 <x-layout>
     <div class="h-screen bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
-        <div class="min-h-screen flex items-center justify-center w-full">
-            <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg px-20 py-10 max-w-lg border border-gray-100 dark:border-gray-800">
-                <form class="h-full mx-auto content-center px-1 font-semibold" method="post" action="/post/create/user">
+        <div class="min-h-screen pb-12 flex items-start justify-center w-full">
+            <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg m-2.5 w-full border border-gray-100 dark:border-gray-800 overflow-y-auto">
+                <form class="h-full content-center font-semibold p-3" method="post" action="/post/create/user">
                     @csrf
                     <div class="text-center font-bold text-xl mb-4 text-gray-800 dark:text-white">New Post</div>
-                    <div class="form-group mb-2 w-full">
-                        <x-form.label for="title">Title</x-form.label>
-                        <x-form.input name="title" placeholder="Enter Title"/>
-                        <x-form.error name="title"/>
+                    <div class="form-group mb-2">
+                        <x-form.label for="name">Full name</x-form.label>
+                        <x-form.input name="name"/>
+                        <x-form.error name="name"/>
                     </div>
-
-                    <div class="form-group mb-2 w-full">
-                        <x-form.label for="description">Description</x-form.label>
-                        <x-form.textarea name="description" rows="6" placeholder="Describe what you're looking for"/>
+                    <div class="form-group mb-2">
+                        <x-form.label for="time">How many hours can you work every day?</x-form.label>
+                        <x-form.input name="time" type="number" placeholder="Hours per day"/>
+                        <x-form.error name="time"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <x-form.label for="skills">Skills and experiences you have</x-form.label>
+                        <x-form.textarea name="skills" rows="4"/>
+                        <x-form.error name="skills"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <x-form.label for="description">Tell something about you</x-form.label>
+                        <x-form.textarea name="description" rows="6"/>
                         <x-form.error name="description"/>
                     </div>
 
