@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative z-50">
     <div class="fixed bottom-0 left-0 right-0 md:top-0">
         <nav class="bg-white shadow-lg border border-gray-300">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
