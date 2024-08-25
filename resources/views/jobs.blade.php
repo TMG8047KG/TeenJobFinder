@@ -1,4 +1,6 @@
 <x-layout>
+    <x-nav/>
+
     <!-- Background -->
     <div class="min-h-screen bg-gradient-to-r from-blue-400 via-white to-blue-500 pt-20"> <!-- Added pt-20 for spacing -->
         <!-- Content -->
