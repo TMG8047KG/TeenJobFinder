@@ -40,7 +40,7 @@ class UserController extends Controller
         ]);
         $data['company_id'] = 0;
         $data['photo'] = null;
-        $data['bio']='Info about you';
+        $data['bio']= null;
 
         $user = User::create($data);
 

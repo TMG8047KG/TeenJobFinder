@@ -10,13 +10,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/jobs', function () {
-    // Fetch all jobs from the database
-    $jobs = Post::all();
-
-    // Pass the jobs to the view
-    return view('jobs', ['jobs' => $jobs]);
-})->name('jobs');
+Route::get('/jobs', [PostController::class, 'posts'])->name('jobs');
 
 Route::get('/jobs/{id}', function ($id) {
       $job =  Post::find($id);

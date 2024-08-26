@@ -12,9 +12,9 @@
                     </div>
                     <div class="form-group mb-2 w-full inline-flex space-x-2">
                         <div>
-                            <x-form.label for="time">Work time</x-form.label>
-                            <x-form.input name="time" type="number" placeholder="4" size="w-24"/>
-                            <x-form.error name="time"/>
+                            <x-form.label for="work_time">Work time</x-form.label>
+                            <x-form.input name="work_time" type="number" placeholder="4" size="w-24"/>
+                            <x-form.error name="work_time"/>
                         </div>
                         <div class="w-full">
                             <x-form.label for="salary">Salary</x-form.label>

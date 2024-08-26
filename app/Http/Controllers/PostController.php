@@ -19,6 +19,12 @@ class PostController extends Controller
         return redirect('/profile');
     }
 
+    public function posts()
+    {
+        $post = Post::all();
+        return view('jobs', ['posts' => $post]);
+    }
+
     public function companyForm()
     {
         if(Auth::user()->company_id == 0){
@@ -33,10 +39,13 @@ class PostController extends Controller
 
     public function listing(Request $request){
         $data = $request->validate([
-           'title' => 'required',
-           'description' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'skills' => 'required',
+            'work_time' => 'required',
+            'salary' => 'min:2',
         ]);
-        $data['skills'] = 'none';
+        $data['tag_id'] = 1;
 
         auth()->user()->posts()->create($data);
 
@@ -45,10 +54,12 @@ class PostController extends Controller
 
     public function lookingForWork(Request $request){
         $data = $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],
+            'title' => 'required',
+            'description' => 'required',
+            'skills' => 'required',
+            'work_time' => 'required',
         ]);
-        $data['skills'] = 'none';
+        $data['tag_id'] = 2;
 
         auth()->user()->posts()->create($data);
 

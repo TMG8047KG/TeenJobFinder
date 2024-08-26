@@ -22,8 +22,8 @@ class PostFactory extends Factory
             'title' => fake()->name(),
             'skills' => fake()->text(),
             'description'=> fake()->text(),
-            'user_id' => 1
-//            'tag_id' => Str::random(10),
+            'user_id' => 1,
+            'tag_id' => 1,
         ];
     }
 }

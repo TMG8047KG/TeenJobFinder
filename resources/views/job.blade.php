@@ -23,11 +23,11 @@
 
 
             <div class="text-xl text-gray-800 mb-4">
-                <p><strong>Work Hours Required:</strong> {{ $job['work-time'] }} hours/day</p>
+                <p><strong>Work Hours Required:</strong> {{ $job->work_time }} hours/day</p>
             </div>
 
             <div class="text-xl text-gray-800 mb-6">
-                <p><strong>Salary:</strong> ${{ $job['salary'] }} per month</p>
+                <p><strong>Salary:</strong> ${{ $job->salary }} per month</p>
             </div>
         </div>
     </div>

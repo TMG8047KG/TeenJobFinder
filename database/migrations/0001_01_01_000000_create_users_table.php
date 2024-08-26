@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignIdFor(Company::class);
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->string('photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
