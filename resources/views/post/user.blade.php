@@ -6,14 +6,14 @@
                     @csrf
                     <div class="text-center font-bold text-xl mb-4 text-gray-800 dark:text-white">New Post</div>
                     <div class="form-group mb-2">
-                        <x-form.label for="name">Full name</x-form.label>
-                        <x-form.input name="name"/>
-                        <x-form.error name="name"/>
+                        <x-form.label for="title">Full name</x-form.label>
+                        <x-form.input name="title"/>
+                        <x-form.error name="title"/>
                     </div>
                     <div class="form-group mb-2">
-                        <x-form.label for="time">How many hours can you work every day?</x-form.label>
-                        <x-form.input name="time" type="number" placeholder="Hours per day"/>
-                        <x-form.error name="time"/>
+                        <x-form.label for="work_time">How many hours can you work every day?</x-form.label>
+                        <x-form.input name="work_time" type="number" placeholder="Hours per day"/>
+                        <x-form.error name="work_time"/>
                     </div>
                     <div class="form-group mb-2">
                         <x-form.label for="skills">Skills and experiences you have</x-form.label>
