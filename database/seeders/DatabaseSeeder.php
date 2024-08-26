@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'tag' => 'seeker'
         ]);
 
-        User::factory()->create();
+//        User::factory()->create();
 //        Post::factory(10)->create();
 
 

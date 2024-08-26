@@ -9,7 +9,7 @@
 
             <div class="flex space-x-5 overflow-x-auto"> <!-- Used flexbox to arrange items horizontally -->
                 @foreach($posts as $post)
-                    <a href="/jobs/{{ $post->id }}" class="flex-shrink-0 w-80 px-6 py-8 border-2 border-blue-500 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-100 bg-white bg-opacity-90">
+                    <a href="/posts/{{ $post->id }}" class="flex-shrink-0 w-80 px-6 py-8 border-2 border-blue-500 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-100 bg-white bg-opacity-90">
                         <div class="flex items-center justify-between mb-4">
                             <div class="text-lg font-bold text-blue-700">
                                 {{ $post->user->name }}

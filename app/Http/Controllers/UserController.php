@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Marks;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,9 @@ class UserController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            return view('profile',['user'=>$user]);
+            $favorites = Marks::where(['user_id' => Auth::id()])->get();
+            $posts = Post::findOrFail($favorites->pluck('post_id'));
+            return view('profile',['user'=>$user, 'favorites'=>$posts]);
         }else{
             return $this->loginView();
         }

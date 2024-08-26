@@ -22,7 +22,13 @@ class PostController extends Controller
     public function posts()
     {
         $post = Post::all();
-        return view('jobs', ['posts' => $post]);
+        return view('post.main', ['posts' => $post]);
+    }
+
+    public function post($id)
+    {
+        $post =  Post::findOrFail($id);
+        return view('post.post', ['post' => $post]);
     }
 
     public function companyForm()
@@ -49,7 +55,7 @@ class PostController extends Controller
 
         auth()->user()->posts()->create($data);
 
-        return redirect('/jobs');
+        return redirect('/posts');
     }
 
     public function lookingForWork(Request $request){
@@ -63,6 +69,6 @@ class PostController extends Controller
 
         auth()->user()->posts()->create($data);
 
-        return redirect('/jobs');
+        return redirect('/posts');
     }
 }

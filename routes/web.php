@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MarksController;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -10,12 +12,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/jobs', [PostController::class, 'posts'])->name('jobs');
+Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 
-Route::get('/jobs/{id}', function ($id) {
-      $job =  Post::find($id);
-    return view('job', ['job' => $job]);
-});
+Route::get('/posts/{id}', [PostController::class, 'post']);
+Route::post('/posts/{id}', [MarksController::class, 'action']);
 
 Route::get('/notifications', function () {
     return view('notifications');

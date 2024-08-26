@@ -47,14 +47,9 @@
 
                             <div class="px-2 py-3 h-auto overflow-y-auto">
                                 <div x-show="tab === 'favorites'" class="space-y-2">
-                                    <div class="bg-blue-100 p-3 rounded-md shadow-md">
-                                        <div class="text-md font-semibold text-blue-700">Favorite Example 1</div>
-                                        <div class="text-gray-600">Description of a liked item.</div>
-                                    </div>
-                                    <div class="bg-blue-100 p-3 rounded-md shadow-md">
-                                        <div class="text-md font-semibold text-blue-700">Favorite Example 2</div>
-                                        <div class="text-gray-600">Description of a liked item.</div>
-                                    </div>
+                                    @foreach($favorites as $post)
+                                        <x-profile.favorite title="{{ $post->title }}" description="{{ $post->description }}"/>
+                                    @endforeach
                                 </div>
                                 <div x-show="tab === 'jobs'" class="space-y-2">
                                     <div class="bg-blue-100 p-3 rounded-md shadow-md">
