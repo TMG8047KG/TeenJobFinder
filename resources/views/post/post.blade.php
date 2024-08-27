@@ -12,7 +12,7 @@
                 <div class="text-2xl text-gray-700">
                     <strong>Employer:</strong>
                     <strong class="text-center text-3xl font-semibold text-blue-700 mb-6">
-                        {{ $post['title'] }}
+                        {{ $post->title }}
                     </strong>
                 </div>
             </div>

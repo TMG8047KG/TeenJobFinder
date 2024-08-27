@@ -29,25 +29,32 @@
         <!-- Recommended Jobs Section -->
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold text-white px-2">Recommended Jobs</h4>
-            @foreach($posts as $post)
-                <a href="/jobs/{{ $post->id }}" class="flex-shrink-0 w-80 px-6 py-8 border-2 border-blue-500 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-100 bg-white bg-opacity-90">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-lg font-bold text-blue-700">
-                            {{ $post->user->name }}
-                        </div>
-                        <div class="text-sm font-semibold text-gray-600">
-                            Posted: {{ $post->created_at->diffForHumans() }}
-                        </div>
-                    </div>
-                    <div class="text-3xl font-bold text-blue-700 mb-2">
-                        {{ $post->title }}
-                    </div>
-                    <div class="text-xl text-gray-700">
-                        <p><strong>Work-time:</strong> {{ $post->work_time }} hours/day</p>
-                        <p><strong>Salary:</strong> ${{ $post->salary }} per month</p>
-                    </div>
-                </a>
-            @endforeach
+            <div class="p-3 space-y-4 z-0">
+                <div class="flex space-x-4 overflow-x-auto w-full shadow">
+                    @foreach($posts as $post)
+                        <x-recommended-job class="flex-shrink-0 px-6 py-4 border-2 border-blue-500 border-t-4 border-t-blue-500 shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-100">
+                            <a href="{{ route('post.show', $post->id) }}">
+                                <div class="flex flex-col">
+                                    <div class="text-3xl font-bold mb-2">
+                                        {{ $post->title }}
+                                    </div>
+                                    <div class="flex justify-between mb-4">
+                                        <div class="text-lg font-bold">
+                                            {{ $post->user->name }}
+                                        </div>
+                                    </div>
+                                    <div class="text-sm text-gray-700">
+                                        <p><strong>Work-time:</strong></p>
+                                        <p>{{ $post->work_time }} hours/day</p>
+                                        <p><strong>Salary:</strong></p>
+                                        <p>${{ $post->salary }} per month</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </x-recommended-job>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
         <!-- "For You" Section -->

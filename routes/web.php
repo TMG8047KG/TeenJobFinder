@@ -42,4 +42,10 @@ Route::post('/post/create/company', [PostController::class, 'listing']);
 Route::get('/company/create', [CompanyController::class, 'index']);
 Route::post('/company/create', [CompanyController::class, 'store']);
 
+Route::get('/jobs/{post}', [App\Http\Controllers\PostController::class, 'post'])->name('post.show');
+
+
+Route::get('/company', function () {
+    return view('company');
+})->name('company');
 

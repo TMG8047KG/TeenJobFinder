@@ -25,11 +25,11 @@ class PostController extends Controller
         return view('post.main', ['posts' => $post]);
     }
 
-    public function post($id)
+    public function post(Post $post)
     {
-        $post =  Post::findOrFail($id);
-        return view('post.post', ['post' => $post]);
+        return view('post.post', compact('post'));
     }
+
 
     public function companyForm()
     {
@@ -71,4 +71,5 @@ class PostController extends Controller
 
         return redirect('/posts');
     }
+
 }
