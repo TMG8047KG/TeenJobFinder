@@ -3,7 +3,7 @@
     'description'
 ])
 
-<div class="bg-violet-100 p-3 rounded-md shadow-md">
-    <div class="text-md font-semibold text-violet-700">{{ $title }}</div>
-    <div class="text-gray-600">{{ $description }}</div>
+<div class="bg-violet-600 dark:bg-violet-700 p-3 rounded-md shadow-md">
+    <div class="text-md font-semibold text-white">{{ $title }}</div>
+    <div class="text-violet-300">{{ $description }}</div>
 </div>
