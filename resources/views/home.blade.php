@@ -29,14 +29,25 @@
         <!-- Recommended Jobs Section -->
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold text-white px-2">Recommended Jobs</h4>
-            <div class="flex space-x-4 overflow-x-auto w-full shadow">
-                <x-recommended-job class="bg-white bg-opacity-90 text-blue-700">Job Example 1</x-recommended-job>
-                <x-recommended-job class="bg-white bg-opacity-90 text-blue-700">Job Example 2</x-recommended-job>
-                <x-recommended-job class="bg-white bg-opacity-90 text-blue-700">Job Example 3</x-recommended-job>
-                <x-recommended-job class="bg-white bg-opacity-90 text-blue-700">Job Example 4</x-recommended-job>
-                <x-recommended-job class="bg-white bg-opacity-90 text-blue-700">Job Example 5</x-recommended-job>
-                <x-recommended-job class="bg-white bg-opacity-90 text-blue-700">Job Example 6</x-recommended-job>
-            </div>
+            @foreach($posts as $post)
+                <a href="/jobs/{{ $post->id }}" class="flex-shrink-0 w-80 px-6 py-8 border-2 border-blue-500 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-100 bg-white bg-opacity-90">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-lg font-bold text-blue-700">
+                            {{ $post->user->name }}
+                        </div>
+                        <div class="text-sm font-semibold text-gray-600">
+                            Posted: {{ $post->created_at->diffForHumans() }}
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-700 mb-2">
+                        {{ $post->title }}
+                    </div>
+                    <div class="text-xl text-gray-700">
+                        <p><strong>Work-time:</strong> {{ $post->work_time }} hours/day</p>
+                        <p><strong>Salary:</strong> ${{ $post->salary }} per month</p>
+                    </div>
+                </a>
+            @endforeach
         </div>
 
         <!-- "For You" Section -->
