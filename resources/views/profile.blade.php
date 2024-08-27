@@ -5,7 +5,7 @@
                 <div class="rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800">
 
                     <div class="absolute top-2 right-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 text-violet-600 dark:text-violet-700">
+                        <svg fill="none" viewBox="0 0 24 24" class="h-6 w-6 text-violet-600 dark:text-violet-700">
                             <path fill="currentColor" d="M14.293 2.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L16.586 8H5a1 1 0 0 1 0-2h11.586l-2.293-2.293a1 1 0 0 1 0-1.414zm-4.586 10a1 1 0 0 1 0 1.414L7.414 16H19a1 1 0 1 1 0 2H7.414l2.293 2.293a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0z"/>
                         </svg>
                     </div>
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="px-2 py-3 h-auto overflow-y-auto">
-                                <div x-show="tab === 'favorites'" class="space-y-2">
+                                <div x-show="tab === 'favorites'" x-cloak class="space-y-2">
                                     @if($favorites->isEmpty())
                                         <div class="text-center text-gray-500 dark:text-gray-400">
                                             There's nothing here... yet
@@ -75,7 +75,7 @@
                                         @endforeach
                                     @endif
                                 </div>
-                                <div x-show="tab === 'jobs'" class="space-y-2">
+                                <div x-show="tab === 'jobs'" x-cloak class="space-y-2">
                                     <div class="bg-violet-600 dark:bg-violet-700 p-3 rounded-md shadow-md">
                                         <div class="text-md font-semibold text-white">Job Example 1</div>
                                         <div class="text-violet-300">Description of a job.</div>

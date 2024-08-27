@@ -22,6 +22,7 @@ class CompanyPolicy
     public function view(User $user, Company $company): bool
     {
         return true;
+
     }
 
     /**
@@ -29,7 +30,7 @@ class CompanyPolicy
      */
     public function create(User $user): bool
     {
-        return $user->company() == false;
+        return $user->company()->count() <= 0;
     }
 
     /**

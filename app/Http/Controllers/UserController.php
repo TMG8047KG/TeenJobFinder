@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 
@@ -15,14 +16,10 @@ class UserController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
-        if(Auth::check()){
-            $user = Auth::user();
-            $favorites = Marks::where(['user_id' => Auth::id()])->get();
-            $posts = Post::findOrFail($favorites->pluck('post_id'));
-            return view('profile',['user'=>$user, 'favorites'=>$posts]);
-        }else{
-            return $this->loginView();
-        }
+        $user = Auth::user();
+        $favorites = Marks::where(['user_id' => Auth::id()])->get();
+        $posts = Post::findOrFail($favorites->pluck('post_id'));
+        return view('profile',['user'=>$user, 'favorites'=>$posts]);
     }
 
     public function loginView(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application

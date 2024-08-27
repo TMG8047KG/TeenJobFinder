@@ -13,10 +13,7 @@ use function Laravel\Prompts\text;
 class PostController extends Controller
 {
     public function index(){
-        if(Auth::check()){
-            return view('post.options');
-        }
-        return redirect('/profile');
+        return view('post.options');
     }
 
     public function posts()
@@ -34,9 +31,6 @@ class PostController extends Controller
 
     public function companyForm()
     {
-        if(Auth::user()->company_id == 0){
-            return redirect('/company/create');
-        }
         return view('post.company');
     }
     public function userForm()

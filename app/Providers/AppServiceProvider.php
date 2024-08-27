@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::policy(Company::class, CompanyPolicy::class);
+        Gate::define('createCompany', [CompanyPolicy::class, 'create']);
         $posts = Post::all();
         View::share('posts', $posts);
     }
