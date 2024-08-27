@@ -14,11 +14,11 @@
                         <!-- Profile Picture -->
                         <div class="mt-2 max-w-2xl text-sm text-gray-700 dark:text-gray-400">
                             <label for="photo" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Profile Picture:</label>
+                            <input type="file" id="photo" name="photo"
+                                   class=" mt-4 block w-full file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-600 file:dark:bg-violet-700 file:text-white hover:file:bg-violet-800 rounded-lg border-gray-300 dark:border-gray-400 shadow-sm focus:border-violet-500 bg-gray-100 dark:bg-gray-700 focus:ring-violet-500 sm:text-sm" />
                             @if($user->photo)
                                 <div class="mt-4">
                                     <img src="{{ asset('storage/' . $user->photo) }}" alt="Profile Picture" class="w-24 h-24 rounded-full shadow-lg mx-auto">
-                                    <input type="file" id="photo" name="photo"
-                                           class=" mt-4 block w-full file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-600 file:dark:bg-violet-700 file:text-white hover:file:bg-violet-800 rounded-lg border-gray-300 dark:border-gray-400 shadow-sm focus:border-violet-500 bg-gray-100 dark:bg-gray-700 focus:ring-violet-500 sm:text-sm" />
                                 </div>
                             @endif
                         </div>
