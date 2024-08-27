@@ -10,7 +10,10 @@ class CompanyController extends Controller
     public function index(){
         return view('company.create');
     }
-
+    public function dashboard(){
+        $company = Auth::user()->company;
+        return view('company.dashboard', compact('company'));
+    }
     public function store(Request $request){
         $data = $request->validate([
             'name' => 'required',
