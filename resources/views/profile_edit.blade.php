@@ -12,33 +12,33 @@
                     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         @csrf
                         <!-- Profile Picture -->
-                        <div class="mt-6 max-w-2xl text-sm text-gray-700 dark:text-gray-400">
-                            <label for="photo" class="block text-sm font-medium text-gray-800">Profile Picture:</label>
-                            <input type="file" id="photo" name="photo"
-                                   class="bg-gray-100 dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-400 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm" />
+                        <div class="mt-2 max-w-2xl text-sm text-gray-700 dark:text-gray-400">
+                            <label for="photo" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Profile Picture:</label>
                             @if($user->photo)
                                 <div class="mt-4">
                                     <img src="{{ asset('storage/' . $user->photo) }}" alt="Profile Picture" class="w-24 h-24 rounded-full shadow-lg mx-auto">
+                                    <input type="file" id="photo" name="photo"
+                                           class=" mt-4 block w-full file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-600 file:dark:bg-violet-700 file:text-white hover:file:bg-violet-800 rounded-lg border-gray-300 dark:border-gray-400 shadow-sm focus:border-violet-500 bg-gray-100 dark:bg-gray-700 focus:ring-violet-500 sm:text-sm" />
                                 </div>
                             @endif
                         </div>
 
                         <!-- Username -->
-                        <div class="mt-6 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
                             <label for="username" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Username:</label>
                             <input type="text" id="username" name="username" value="{{ $user->username }}"
                                    class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
                         </div>
 
                         <!-- Email -->
-                        <div class="mt-6 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
                             <label for="email" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Email:</label>
                             <input type="email" id="email" name="email" value="{{ $user->email }}"
                                    class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
                         </div>
 
                         <!-- Password -->
-                        <div class="mt-6 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
                             <label for="password" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Password:</label>
                             <input type="password" id="password" name="password"
                                    class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
@@ -46,13 +46,13 @@
                         </div>
 
                         <!-- Bio -->
-                        <div class="mt-6 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
                             <label for="bio" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Bio:</label>
                             <textarea id="bio" name="bio" rows="3"
                                       class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm">{{ $user->bio }}</textarea>
                         </div>
 
-                        <div class="pt-12 pb-8">
+                        <div class="pt-9 pb-8">
                             <button type="submit" class="bg-violet-600 dark:bg-violet-700 hover:bg-violet-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-200">
                                 Save Changes
                             </button>
