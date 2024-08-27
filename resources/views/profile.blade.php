@@ -65,9 +65,15 @@
 
                             <div class="px-2 py-3 h-auto overflow-y-auto">
                                 <div x-show="tab === 'favorites'" class="space-y-2">
-                                    @foreach($favorites as $post)
-                                        <x-profile.favorite title="{{ $post->title }}" description="{{ $post->description }}"/>
-                                    @endforeach
+                                    @if($favorites->isEmpty())
+                                        <div class="text-center text-gray-500 dark:text-gray-400">
+                                            There's nothing here... yet
+                                        </div>
+                                    @else
+                                        @foreach($favorites as $post)
+                                            <x-profile.favorite title="{{ $post->title }}" description="{{ $post->description }}"/>
+                                        @endforeach
+                                    @endif
                                 </div>
                                 <div x-show="tab === 'jobs'" class="space-y-2">
                                     <div class="bg-violet-600 dark:bg-violet-700 p-3 rounded-md shadow-md">
