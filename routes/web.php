@@ -12,10 +12,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
-
-Route::get('/posts/{id}', [PostController::class, 'post']);
-Route::post('/posts/{id}', [MarksController::class, 'action']);
 
 Route::get('/notifications', function () {
     return view('notifications');
@@ -39,10 +35,15 @@ Route::post('/post/create/user', [PostController::class, 'lookingForWork']);
 Route::get('/post/create/company', [PostController::class, 'companyForm']);
 Route::post('/post/create/company', [PostController::class, 'listing']);
 
+Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
+
+Route::get('/posts/{id}', [PostController::class, 'post'])->name('post.show');
+Route::post('/posts/{id}', [MarksController::class, 'action']);
+
 Route::get('/company/create', [CompanyController::class, 'index']);
 Route::post('/company/create', [CompanyController::class, 'store']);
 
-Route::get('/jobs/{post}', [App\Http\Controllers\PostController::class, 'post'])->name('post.show');
+
 
 Route::get('/company', function () {
     return view('company');
