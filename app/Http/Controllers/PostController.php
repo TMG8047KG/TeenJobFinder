@@ -27,7 +27,9 @@ class PostController extends Controller
     public function post($id)
     {
         $post = Post::findOrFail($id);
-        return view('post.post', ['post' => $post]);
+        $type = $post->categories->first()->name;
+        $tags = $post->tags;
+        return view('post.post', ['post' => $post, 'type' => $type, 'tags' => $tags]);
     }
 
 
@@ -61,10 +63,14 @@ class PostController extends Controller
             'description' => 'required',
             'skills' => 'required',
             'work_time' => 'required',
+            'age' => 'required',
         ]);
-        $data['tag_id'] = 2;
 
-        auth()->user()->posts()->create($data);
+        $user = auth()->user();
+        $user->age = $data['age'];
+        $user->save();
+        $post = $user->posts()->create($data);
+        $post->categories()->attach(Category::findOrFail(2));
 
         return redirect('/posts');
     }

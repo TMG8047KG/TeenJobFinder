@@ -24,9 +24,6 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'company_id',
-        'bio',
-        'photo',
     ];
 
     /**
@@ -70,7 +67,7 @@ class User extends Authenticatable
     public function getPhotoUrlAttribute()
     {
         // If the user has a photo, return its URL. Otherwise, return the default photo URL.
-        return $this->photo ? asset('storage/' . $this->photo) : asset('images/placeholder-avatar.jpg');
+        return $this->photo ? asset('storage/' . $this->photo) : asset('https://avatar.iran.liara.run/username?username='. $this->username);
     }
 
 }

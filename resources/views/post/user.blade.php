@@ -11,7 +11,12 @@
                         <x-form.error name="title"/>
                     </div>
                     <div class="form-group mb-2">
-                        <x-form.label for="work_time">How many hours can you work every day?</x-form.label>
+                        <x-form.label for="age">Your age</x-form.label>
+                        <x-form.input name="age" type="number"/>
+                        <x-form.error name="age"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <x-form.label for="work_time">How many hours can you work in a day?</x-form.label>
                         <x-form.input name="work_time" type="number" placeholder="Hours per day"/>
                         <x-form.error name="work_time"/>
                     </div>
