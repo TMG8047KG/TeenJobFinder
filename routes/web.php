@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-
 Route::get('/notifications', function () {
     return view('notifications');
 })->name('notifications');
