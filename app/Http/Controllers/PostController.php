@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Company;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
@@ -46,9 +48,9 @@ class PostController extends Controller
             'work_time' => 'required',
             'salary' => 'min:2',
         ]);
-        $data['tag_id'] = 1;
-
-        auth()->user()->posts()->create($data);
+        $post = auth()->user()->posts()->create($data);
+        $post->categories()->attach(Category::findOrFail(1));
+        $post->tags()->attach(Tag::findOrFail(1));
 
         return redirect('/posts');
     }

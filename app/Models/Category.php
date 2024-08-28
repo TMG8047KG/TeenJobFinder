@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Tag extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    public function posts(): HasMany{
-        return $this->hasMany(Post::class, 'post_tags');
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'post_category');
     }
 }

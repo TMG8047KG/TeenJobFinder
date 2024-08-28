@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 
 class Post extends Model
@@ -31,15 +31,22 @@ class Post extends Model
         'work_time',
         'salary',
         'description',
-        'tag_id',
     ];
 
     /**
-     * @return HasOne
+     * @return BelongsToMany
      */
-    public function tagName(): HasOne
+    public function tags(): BelongsToMany
     {
-        return $this->hasOne(Tag::class, 'id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'post_tags');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'post_category');
     }
 
     /**

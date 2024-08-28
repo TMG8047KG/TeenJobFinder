@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Post;
-use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('post_tags', static function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Post::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(Post::class)->constrained();
+            $table->foreignIdFor(Tag::class)->constrained();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('post_tags');
     }
 };

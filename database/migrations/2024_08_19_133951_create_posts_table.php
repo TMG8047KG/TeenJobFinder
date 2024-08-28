@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -23,7 +25,6 @@ return new class extends Migration
             $table->text('description');
             $table->text('work_time')->nullable();
             $table->integer("salary")->nullable();
-            $table->foreignIdFor(Tag::class)->constrained();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
