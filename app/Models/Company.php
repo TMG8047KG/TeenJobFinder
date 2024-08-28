@@ -19,12 +19,18 @@ class Company extends Model
         'address',
         'phone',
         'description',
-        'email'
+        'email',
+        'photo'
     ];
 
     protected $table = 'company';
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
+    }
+    public function getPhotoUrlAttribute()
+    {
+        // If the user has a photo, return its URL. Otherwise, return the default photo URL.
+        return $this->photo ? asset('storage/' . $this->photo) : asset('images/placeholder-avatar.jpg');
     }
 }

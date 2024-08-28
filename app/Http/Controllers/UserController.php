@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 
@@ -16,10 +15,21 @@ class UserController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
-        $user = Auth::user();
-        $favorites = Marks::where(['user_id' => Auth::id()])->get();
-        $posts = Post::findOrFail($favorites->pluck('post_id'));
-        return view('profile',['user'=>$user, 'favorites'=>$posts]);
+        if(Auth::check()){
+            $user = Auth::user();
+            $favorites = Marks::where(['user_id' => Auth::id()])->get();
+            $posts = Post::findOrFail($favorites->pluck('post_id'));
+            if ($user->company_id !== null && $user->company_id !== 0) {
+                // The user has a company
+                $company = Company::find($user->company_id);
+                // You can now access the company details using $company
+            } else {
+                // The user does not have a company
+            }
+            return view('profile',['user'=>$user, 'favorites'=>$posts]);
+        }else{
+            return $this->loginView();
+        }
     }
 
     public function loginView(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
@@ -104,7 +114,6 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
 
-        // If a new password is provided, hash and save it
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }

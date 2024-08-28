@@ -58,6 +58,12 @@ Route::get('/profile/login', [UserController::class, 'loginView']);
 Route::get('/profile/register', [UserController::class, 'registerView']);
 Route::post('/profile/login', [UserController::class, 'login']);
 Route::post('/profile/register', [UserController::class, 'register'])->name('register');
+Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company.dashboard');
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::post('/company/update', [CompanyController::class, 'update'])->name('company.update');
+
+
+
 
 Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 Route::get('/posts/{id}', [PostController::class, 'post'])->name('post.show');

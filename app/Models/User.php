@@ -52,7 +52,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function company(): HasOne
+    public function company()
     {
         return $this->hasOne(Company::class);
     }
@@ -72,4 +72,5 @@ class User extends Authenticatable
         // If the user has a photo, return its URL. Otherwise, return the default photo URL.
         return $this->photo ? asset('storage/' . $this->photo) : asset('images/placeholder-avatar.jpg');
     }
+
 }
