@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignIdFor(Company::class)->nullable();
             $table->integer('age')->nullable();
             $table->text('bio')->nullable();
             $table->string('photo')->nullable();

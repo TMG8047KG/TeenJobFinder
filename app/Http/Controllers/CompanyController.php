@@ -13,18 +13,8 @@ class CompanyController extends Controller
     }
     public function dashboard()
     {
-        $user = Auth::user();
-
-        // Check if the user has a company associated
-        if ($user->company) {
-            $company = $user->company;
-
-            // Return the view with the company data
-            return view('company_dashboard', compact('company'));
-        } else {
-            // Redirect if no company is associated
-            return redirect()->route('company.create')->with('error', 'You need to create a company before accessing the dashboard.');
-        }
+        $company = auth()->user()->company;
+        return view('company_dashboard', compact('company'));
     }
     public function store(Request $request){
         $data = $request->validate([
@@ -37,10 +27,7 @@ class CompanyController extends Controller
 
 
         //TODO:Look for possible change for better checking and updating
-        $user = Auth::user();
-        $company = $user->company()->create($data);
-        $user->company_id = $company->id;
-        $user->save();
+        auth()->user()->company()->create($data);
 
         return redirect('/post/create/company');
     }
@@ -52,8 +39,8 @@ class CompanyController extends Controller
     }
     public function update(Request $request)
     {
-        $user = Auth::user();
-        $company = $user->company;
+
+        $company = auth()->user()->company;
 
         // Validate request data
         $data = $request->validate([

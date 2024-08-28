@@ -16,8 +16,6 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('/company/dashboard', 'CompanyController')->name('company.dashboard');
-
 
 Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 
@@ -46,22 +44,21 @@ Route::middleware([isUser::class])->group(function () {
     Route::middleware([CompanyPost::class])->group(function () {
         Route::get('/post/create/company', [PostController::class, 'companyForm']);
         Route::post('/post/create/company', [PostController::class, 'listing']);
+        Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company.dashboard');
+        Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+        Route::post('/company/update', [CompanyController::class, 'update'])->name('company.update');
     });
     Route::middleware([CompanyMiddleware::class])->group(function () {
         Route::get('/company/create', [CompanyController::class, 'index']);
         Route::post('/company/create', [CompanyController::class, 'store']);
+
     });
 });
-
 
 Route::get('/profile/login', [UserController::class, 'loginView']);
 Route::get('/profile/register', [UserController::class, 'registerView']);
 Route::post('/profile/login', [UserController::class, 'login']);
 Route::post('/profile/register', [UserController::class, 'register'])->name('register');
-Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company.dashboard');
-Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
-Route::post('/company/update', [CompanyController::class, 'update'])->name('company.update');
-
 
 
 

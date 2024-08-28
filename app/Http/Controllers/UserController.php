@@ -15,21 +15,10 @@ class UserController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
-        if(Auth::check()){
-            $user = Auth::user();
-            $favorites = Marks::where(['user_id' => Auth::id()])->get();
-            $posts = Post::findOrFail($favorites->pluck('post_id'));
-            if ($user->company_id !== null && $user->company_id !== 0) {
-                // The user has a company
-                $company = Company::find($user->company_id);
-                // You can now access the company details using $company
-            } else {
-                // The user does not have a company
-            }
-            return view('profile',['user'=>$user, 'favorites'=>$posts]);
-        }else{
-            return $this->loginView();
-        }
+        $user = Auth::user();
+        $favorites = Marks::where(['user_id' => Auth::id()])->get();
+        $posts = Post::findOrFail($favorites->pluck('post_id'));
+        return view('profile',['user'=>$user, 'favorites'=>$posts]);
     }
 
     public function loginView(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
