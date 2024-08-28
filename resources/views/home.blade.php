@@ -19,22 +19,26 @@
                 </div>
                 <input type="text" class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-600 focus:ring-violet-700" placeholder="Search for a job...">
             </div>
-{{--            <button class="bg-violet-700 text-white rounded-xl px-4 py-2 shadow-md hover:bg-violet-600 transition duration-200" @click="filters = !filters" type="button">--}}
-{{--                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">--}}
-{{--                    <path fill-rule="evenodd" d="M3.5 5.5A2.5 2.5 0 016 3h8a2.5 2.5 0 012.5 2.5v.607a1.5 1.5 0 01-.44 1.06l-4.56 4.557a1.5 1.5 0 00-.44 1.06V16.5a1.5 1.5 0 11-3 0v-3.716a1.5 1.5 0 00-.44-1.06l-4.56-4.557A1.5 1.5 0 013.5 6.107V5.5z" clip-rule="evenodd" />--}}
-{{--                </svg>--}}
-{{--            </button>--}}
+            {{--            <button class="bg-violet-700 text-white rounded-xl px-4 py-2 shadow-md hover:bg-violet-600 transition duration-200" @click="filters = !filters" type="button">--}}
+            {{--                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">--}}
+            {{--                    <path fill-rule="evenodd" d="M3.5 5.5A2.5 2.5 0 016 3h8a2.5 2.5 0 012.5 2.5v.607a1.5 1.5 0 01-.44 1.06l-4.56 4.557a1.5 1.5 0 00-.44 1.06V16.5a1.5 1.5 0 11-3 0v-3.716a1.5 1.5 0 00-.44-1.06l-4.56-4.557A1.5 1.5 0 013.5 6.107V5.5z" clip-rule="evenodd" />--}}
+            {{--                </svg>--}}
+            {{--            </button>--}}
         </div>
 
         <!-- Recommended Jobs Section -->
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold text-white dark:text-gray-900 px-2">Recommended Jobs</h4>
-            <div class="p-3 space-y-4 z-0">
-                <div class="flex space-x-4 overflow-x-auto w-full shadow ">
-                    @foreach($posts as $post)
+            <div class="flex-grow flex items-center justify-center">
+                <div class="w-full h-full flex items-center justify-center shadow-lg bg-white dark:bg-gray-800 rounded-lg">
+                    @forelse($posts as $post)
                         <x-recommended-job id="{{ $post->id }}" title="{{ $post->title }}" name="{{ $post->user->name }}" work_time="{{ $post->work_time }}" salary="{{ $post->salary }}"/>
-{{--                        class="flex-shrink-0 px-6 py-4 border-2 border-blue-500 border-t-4 border-t-blue-500 shadow-lg transform transition-transform hover:scale-105 hover:bg-blue-100"--}}
-                    @endforeach
+                    @empty
+                        <div class="flex-grow flex items-center justify-center" style="min-height: 300px; max-height: 400px;">
+                        <div class="text-violet-600 dark:text-violet-700 font-semibold text-xl">
+                            Nothing to Recommend
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
