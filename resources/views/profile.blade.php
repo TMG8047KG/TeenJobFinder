@@ -2,9 +2,11 @@
     <div class="w-full h-screen bg-gradient-to-br from-purple-400 via-gray-100 to-purple-500 dark:from-violet-900 dark:via-gray-900 dark:to-violet-800 flex items-center justify-center overflow-hidden">
         <div class="relative w-full">
             <div class="absolute top-5 left-7 flex items-center justify-center z-10">
-                <svg viewBox="0 0 32 32" fill="currentColor" class="h-8 w-8 text-violet-600 dark:text-violet-700">
-                    <path d="M12,14a1.25,1.25,0,1,0,1.25,1.25A1.25,1.25,0,0,0,12,14Zm0-1.5a1,1,0,0,0,1-1v-3a1,1,0,0,0-2,0v3A1,1,0,0,0,12,12.5ZM12,2A10,10,0,1,0,22,12,10.01114,10.01114,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.00917,8.00917,0,0,1,12,20Z"/>
-                </svg>
+                <a href="/footer">
+                    <svg viewBox="0 0 32 32" fill="currentColor" class="h-8 w-8 text-violet-600 dark:text-violet-700">
+                        <path d="M12,14a1.25,1.25,0,1,0,1.25,1.25A1.25,1.25,0,0,0,12,14Zm0-1.5a1,1,0,0,0,1-1v-3a1,1,0,0,0-2,0v3A1,1,0,0,0,12,12.5ZM12,2A10,10,0,1,0,22,12,10.01114,10.01114,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.00917,8.00917,0,0,1,12,20Z"/>
+                    </svg>
+                </a>
             </div>
             <div class="relative mx-2">
                 <div class="rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800">
