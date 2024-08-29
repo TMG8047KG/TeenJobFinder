@@ -18,19 +18,16 @@ class PostController extends Controller
         return view('post.options');
     }
 
-    public function posts(Request $request)
+    public function posts()
     {
-        $query = $request->input('query');
+        $jobs = Post::whereHas('categories', function ($q) {
+            $q->where('name', 'Job Offer');
+        })->get();
+        $seekers = Post::whereHas('categories', function ($q) {
+            $q->where('name', 'Job Seeker');
+        })->get();
 
-        if ($query) {
-            $posts = Post::where('title', 'like', '%' . $query . '%')
-                ->orWhere('description', 'like', '%' . $query . '%')
-                ->get();
-        } else {
-            $posts = Post::all();
-        }
-
-        return view('post.main', ['posts' => $posts]);
+        return view('post.main', ['jobs' => $jobs , 'seekers' => $seekers]);
     }
 
     public function post($id)
@@ -87,6 +84,9 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
+        $posts = Post::where('title', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->get();
         return redirect()->route('jobs', ['query' => $query]);
     }
 

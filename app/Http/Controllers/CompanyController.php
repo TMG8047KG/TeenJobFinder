@@ -25,8 +25,6 @@ class CompanyController extends Controller
             'description' => 'required',
         ]);
 
-
-        //TODO:Look for possible change for better checking and updating
         auth()->user()->company()->create($data);
 
         return redirect('/post/create/company');

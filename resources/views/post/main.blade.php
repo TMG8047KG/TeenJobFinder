@@ -1,5 +1,4 @@
 <x-layout>
-    <x-nav/>
     <div x-data="{ activeTab: 'jobs', filters: false }">
         <!-- Listings Bar -->
         <div class="bg-violet-600 text-white py-2">
@@ -16,46 +15,70 @@
         <div class="bg-white dark:bg-gray-800 shadow-md py-2">
             <div class="container mx-auto px-4">
                 <div class="flex justify-center space-x-10 relative">
-                    <!-- Jobs Tab -->
-                    <button @click="activeTab = 'jobs'" :class="activeTab === 'jobs' ? 'text-violet-600 border-b-4 border-violet-600' : 'text-gray-600 dark:text-gray-400'" class="text-lg font-semibold focus:outline-none transition-colors duration-300">
-                        Jobs
-                    </button>
-                    <!-- Seeks Tab -->
-                    <button @click="activeTab = 'seeks'" :class="activeTab === 'seeks' ? 'text-violet-600 border-b-4 border-violet-600' : 'text-gray-600 dark:text-gray-400'" class="text-lg font-semibold focus:outline-none transition-colors duration-300">
-                        Seeks
-                    </button>
+                        <!-- Jobs Tab -->
+                        <button @click="activeTab = 'jobs'" :class="activeTab === 'jobs' ? 'text-violet-600 border-b-4 border-violet-600' : 'text-gray-600 dark:text-gray-400'" class="text-lg font-semibold focus:outline-none transition-colors duration-300">
+                            Jobs
+                        </button>
+                        <!-- Seeks Tab -->
+                        <button @click="activeTab = 'seeks'" :class="activeTab === 'seeks' ? 'text-violet-600 border-b-4 border-violet-600' : 'text-gray-600 dark:text-gray-400'" class="text-lg font-semibold focus:outline-none transition-colors duration-300">
+                            Seeks
+                        </button>
                 </div>
             </div>
         </div>
-            <div class="h-screen bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
-
+        <div class="h-screen bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
             <div class="container mx-auto px-4 py-6">
                 <!-- Jobs Content -->
                 <div x-show="activeTab === 'jobs'" class="max-h-screen overflow-y-auto space-y-5">
-                    @foreach($posts as $post)
-                        <a href="/posts/{{ $post->id }}" class="block w-full p-4 border-2 border-violet-500 dark:border-violet-700 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-violet-100 dark:hover:bg-violet-900 bg-white dark:bg-gray-800 bg-opacity-90">
+                    @if($jobs->count() <= 0)
+                        <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
+                    @endif
+                    @foreach($jobs as $job)
+                        <a href="/posts/{{ $job->id }}" class="block w-full p-4 border-2 border-violet-500 dark:border-violet-700 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-violet-100 dark:hover:bg-violet-900 bg-white dark:bg-gray-800 bg-opacity-90">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="text-lg font-bold text-violet-700 inline-flex">
-                                    <img class="h-8 w-8" src="{{ $post->user->photo_url }}">
-                                    <p class="pl-2">{{ $post->user->username }}</p>
+                                    <img class="h-8 w-8" src="{{ $job->user->photo_url }}">
+                                    <p class="pl-2">{{ $job->user->username }}</p>
                                 </div>
                                 <div class="text-sm font-semibold text-gray-400 dark:text-gray-500">
-                                    Posted: {{ $post->created_at->diffForHumans() }}
+                                    Posted: {{ $job->created_at->diffForHumans() }}
                                 </div>
                             </div>
                             <div class="text-3xl font-bold text-violet-600 mb-2">
-                                {{ $post->title }}
+                                {{ $job->title }}
                             </div>
                             <div class="text-xl text-gray-600 dark:text-gray-400">
-                                <span><strong>Work-time:</strong> {{ $post->work_time }} hours/day</span><br>
-                                <span><strong>Salary:</strong> ${{ $post->salary }} per month</span>
+                                <span><strong>Work-time:</strong> {{ $job->work_time }} hours/day</span><br>
+                                <span><strong>Salary:</strong> ${{ $job->salary }} per month</span>
                             </div>
                         </a>
                     @endforeach
                 </div>
                 <!-- Seeks Content -->
                 <div x-show="activeTab === 'seeks'" class="max-h-screen overflow-y-auto space-y-5">
-                    <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
+                    @if($seekers->count() <= 0)
+                        <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
+                    @endif
+                    @foreach($seekers as $seeker)
+                        <a href="/posts/{{ $seeker->id }}" class="block w-full p-4 border-2 border-violet-500 dark:border-violet-700 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-violet-100 dark:hover:bg-violet-900 bg-white dark:bg-gray-800 bg-opacity-90">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-lg font-bold text-violet-700 inline-flex">
+                                    <img class="h-8 w-8" src="{{ $seeker->user->photo_url }}">
+                                    <p class="pl-2">{{ $seeker->user->username }}</p>
+                                </div>
+                                <div class="text-sm font-semibold text-gray-400 dark:text-gray-500">
+                                    Posted: {{ $seeker->created_at->diffForHumans() }}
+                                </div>
+                            </div>
+                            <div class="text-3xl font-bold text-violet-600 mb-2">
+                                {{ $seeker->title }}
+                            </div>
+                            <div class="text-xl text-gray-600 dark:text-gray-400">
+                                <span><strong>Work-time:</strong> {{ $seeker->work_time }} hours/day</span><br>
+                                <span><strong>Salary:</strong> ${{ $seeker->salary }} per month</span>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

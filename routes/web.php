@@ -37,10 +37,6 @@ Route::middleware([isUser::class])->group(function () {
     Route::get('/profile/edit', [UserController::class, 'editProfileView'])->name('profile_edit');
     Route::post('/profile/edit', [UserController::class, 'updateProfile'])->name('profile.update');
 
-    Route::get('/company', function () {
-        return view('company');
-    })->name('company');
-
     //Post creation
     Route::get('/post/options', [PostController::class, 'index'])->name('post.options');
     Route::get('/post/create/user', [PostController::class, 'userForm']);
