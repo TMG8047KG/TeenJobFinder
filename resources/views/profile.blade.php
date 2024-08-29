@@ -1,12 +1,17 @@
 <x-layout>
     <div class="w-full h-screen bg-gradient-to-br from-purple-400 via-gray-100 to-purple-500 dark:from-violet-900 dark:via-gray-900 dark:to-violet-800 flex items-center justify-center overflow-hidden">
         <div class="relative w-full">
+            <div class="absolute top-5 left-7 flex items-center justify-center z-10">
+                <svg viewBox="0 0 32 32" fill="currentColor" class="h-8 w-8 text-violet-600 dark:text-violet-700">
+                    <path d="M12,14a1.25,1.25,0,1,0,1.25,1.25A1.25,1.25,0,0,0,12,14Zm0-1.5a1,1,0,0,0,1-1v-3a1,1,0,0,0-2,0v3A1,1,0,0,0,12,12.5ZM12,2A10,10,0,1,0,22,12,10.01114,10.01114,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.00917,8.00917,0,0,1,12,20Z"/>
+                </svg>
+            </div>
             <div class="relative mx-2">
                 <div class="rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800">
                     @cannot('createCompany')
-                        <div class="absolute top-2 right-2"style="z-index: 1;">
+                        <div class="absolute top-2 right-2" style="z-index: 1;">
                             <a href="/company/dashboard"> <!-- assuming the route is /company_dashboard -->
-                                <button class="bg-transparent text-white hover:bg-violet-800 transition duration-200 px-5 py-2 rounded-lg flex items-center w-full justify-center"style="z-index: 1;">
+                                <button class="bg-transparent text-white hover:bg-violet-800 transition duration-200 px-5 py-2 rounded-lg flex items-center w-full justify-center" style="z-index: 1;">
                                     <svg id="navigate-icon" fill="none" viewBox="0 0 24 24" class="h-6 w-6 text-violet-600 dark:text-violet-700 cursor-pointer">
                                         <path fill="currentColor" d="M14.293 2.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L16.586 8H5a1 1 0 0 1 0-2h11.586l-2.293-2.293a1 1 0 0 1 0-1.414zm-4.586 10a1 1 0 0 1 0 1.414L7.414 16H19a1 1 0 1 1 0 2H7.414l2.293 2.293a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0z"/>
                                     </svg>
