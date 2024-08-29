@@ -75,4 +75,14 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $posts = Post::where('title', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->get();
+
+        return view('home', compact('posts'));
+    }
+
 }

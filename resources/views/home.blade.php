@@ -1,5 +1,5 @@
 <x-layout>
-    <div x-data="{ filters: false }" class="flex flex-col h-screen max-h-screen overflow-y-auto bg-gradient-to-r from-violet-600 dark:from-violet-900 via-violet-600 dark:via-violet-800 to-violet-500 dark:to-violet-700 ">
+    <div x-data="{ filters: false }" class="flex flex-col h-screen max-h-screen overflow-y-auto bg-gradient-to-r from-violet-600 dark:from-violet-900 via-violet-600 dark:via-violet-800 to-violet-500 dark:to-violet-700">
 
         <!-- Header Section -->
         <div class="px-3 pt-6 pb-3 rounded-lg flex items-center space-x-2 w-full">
@@ -11,14 +11,14 @@
 
         <!-- Search and Filters -->
         <div class="flex items-center justify-between mt-3 px-3 z-10 space-x-2">
-            <div class="relative w-full">
+            <form action="{{ route('search') }}" method="GET" class="relative w-full">
                 <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pr-3">
                     <svg class="h-5 w-5 text-gray-400 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
-                <input type="text" class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-600 focus:ring-violet-700" placeholder="Search for a job...">
-            </div>
+                <input name="query" type="text" class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-600 focus:ring-violet-700" placeholder="Search for a job...">
+            </form>
         </div>
 
         <!-- Recommended Jobs Section -->
