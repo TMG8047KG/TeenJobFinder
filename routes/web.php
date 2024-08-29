@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 
 
+Route::get('/footer', function () {
+    return view('footer');
+})->name('footer');
+
 Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 
 Route::get('/posts/{id}', [PostController::class, 'post']);

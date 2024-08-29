@@ -25,7 +25,7 @@
                         <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $company->phone }}</div>
                         <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $company->address }}</div>
                         <div class="text-center text-gray-600 dark:text-gray-300 text-sm pt-2">
-                            {{ $company->description }}
+                            {{ wordwrap($company->description, 10, " ") }}
                         </div>
                         <div class="w-full flex justify-center pt-3 pb-2 space-x-2">
                             <a href="{{ route('company.edit') }}" class="flex-1">

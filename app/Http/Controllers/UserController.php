@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Marks;
 use App\Models\Post;
 use App\Models\User;

@@ -29,7 +29,7 @@
                         <h1 class="font-extrabold text-3xl text-center mb-2 text-violet-600 uppercase">{{ $user->username }}</h1>
                         <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $user->email }}</div>
                         <div class="text-center text-gray-600 dark:text-gray-300 text-sm pt-2">
-                            {{ $user->bio }}
+                            {{ wordwrap($user->bio, 10, " ") }}
                         </div>
                         <div class="w-full flex justify-center pt-3 pb-2 space-x-2">
                             <a href="/profile/edit" class="flex-1">
