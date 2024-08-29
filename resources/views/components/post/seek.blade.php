@@ -19,11 +19,11 @@
             Posted: {{ $created }}
         </div>
     </div>
-    <div class="text-center">
-        <div class="text-3xl font-bold text-violet-600 mb-2">
+    <div class="">
+        <div class="text-center text-3xl font-bold text-violet-600 mb-2">
             {{ $title }}
         </div>
-        <div class="text-sm font-bold text-gray-300 mb-2 line-clamp-2">
+        <div class="text-sm font-bold text-gray-300 mb-2 indent-2 line-clamp-2">
             {{ $description }}
         </div>
         <div class="text-xl text-gray-600 dark:text-gray-400">
