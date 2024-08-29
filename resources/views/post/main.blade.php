@@ -34,24 +34,14 @@
                         <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
                     @endif
                     @foreach($jobs as $job)
-                        <a href="/posts/{{ $job->id }}" class="block w-full p-4 border-2 border-violet-500 dark:border-violet-700 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-violet-100 dark:hover:bg-violet-900 bg-white dark:bg-gray-800 bg-opacity-90">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="text-lg font-bold text-violet-700 inline-flex">
-                                    <img class="h-8 w-8" src="{{ $job->user->photo_url }}">
-                                    <p class="pl-2">{{ $job->user->username }}</p>
-                                </div>
-                                <div class="text-sm font-semibold text-gray-400 dark:text-gray-500">
-                                    Posted: {{ $job->created_at->diffForHumans() }}
-                                </div>
-                            </div>
-                            <div class="text-3xl font-bold text-violet-600 mb-2">
-                                {{ $job->title }}
-                            </div>
-                            <div class="text-xl text-gray-600 dark:text-gray-400">
-                                <span><strong>Work-time:</strong> {{ $job->work_time }} hours/day</span><br>
-                                <span><strong>Salary:</strong> ${{ $job->salary }} per month</span>
-                            </div>
-                        </a>
+                            <x-post.job
+                                id="{{ $job->id }}"
+                                name="{{ $job->user->username }}"
+                                photo="{{ $job->user->photo_url }}"
+                                created="{{ $job->created_at->diffForHumans() }}"
+                                title="{{ $job->title }}"
+                                description="{{ $job->description }}"
+                                time="{{ $job->work_time }}"/>
                     @endforeach
                 </div>
                 <!-- Seeks Content -->
@@ -60,24 +50,14 @@
                         <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
                     @endif
                     @foreach($seekers as $seeker)
-                        <a href="/posts/{{ $seeker->id }}" class="block w-full p-4 border-2 border-violet-500 dark:border-violet-700 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:bg-violet-100 dark:hover:bg-violet-900 bg-white dark:bg-gray-800 bg-opacity-90">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="text-lg font-bold text-violet-700 inline-flex">
-                                    <img class="h-8 w-8" src="{{ $seeker->user->photo_url }}">
-                                    <p class="pl-2">{{ $seeker->user->username }}</p>
-                                </div>
-                                <div class="text-sm font-semibold text-gray-400 dark:text-gray-500">
-                                    Posted: {{ $seeker->created_at->diffForHumans() }}
-                                </div>
-                            </div>
-                            <div class="text-3xl font-bold text-violet-600 mb-2">
-                                {{ $seeker->title }}
-                            </div>
-                            <div class="text-xl text-gray-600 dark:text-gray-400">
-                                <span><strong>Work-time:</strong> {{ $seeker->work_time }} hours/day</span><br>
-                                <span><strong>Salary:</strong> ${{ $seeker->salary }} per month</span>
-                            </div>
-                        </a>
+                            <x-post.seek
+                                id="{{ $seeker->id }}"
+                                name="{{ $seeker->user->username }}"
+                                photo="{{ $seeker->user->photo_url }}"
+                                created="{{ $seeker->created_at->diffForHumans() }}"
+                                title="{{ $seeker->title }}"
+                                description="{{ $seeker->description }}"
+                                age="{{ $seeker->user->age }}"/>
                     @endforeach
                 </div>
             </div>
