@@ -63,7 +63,8 @@ Route::post('/profile/register', [UserController::class, 'register'])->name('reg
 
 
 Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
+Route::post('/posts', [PostController::class, 'posts']);
 Route::get('/posts/{id}', [PostController::class, 'post'])->name('post.show');
 Route::post('/posts/{id}', [MarksController::class, 'action']);
 Route::get('/search', [PostController::class, 'search'])->name('search');
-Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
+

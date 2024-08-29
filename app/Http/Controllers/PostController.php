@@ -18,16 +18,29 @@ class PostController extends Controller
         return view('post.options');
     }
 
-    public function posts()
+    public function posts(request $request)
     {
-        $jobs = Post::whereHas('categories', function ($q) {
-            $q->where('name', 'Job Offer');
-        })->get();
+        $data = $request->validate([
+            'tag' => 'nullable|string',
+        ]);
+        if(!empty($data)){
+            $jobs = Post::whereHas('categories', function ($q) {
+                $q->where('name', 'Job Offer');
+            })->where(function ($subq) use ($data) {
+                $subq->whereHas('tags', function ($q) use ($data) {
+                    $q->where('tag', $data['tag']);
+                });
+            })->get();
+        }else{
+            $jobs = Post::whereHas('categories', function ($q) {
+                $q->where('name', 'Job Offer');
+            })->get();
+        }
         $seekers = Post::whereHas('categories', function ($q) {
             $q->where('name', 'Job Seeker');
         })->get();
-
-        return view('post.main', ['jobs' => $jobs , 'seekers' => $seekers]);
+        $tags = Tag::all();
+        return view('post.main', ['jobs' => $jobs , 'seekers' => $seekers, 'tags' => $tags]);
     }
 
     public function post($id)

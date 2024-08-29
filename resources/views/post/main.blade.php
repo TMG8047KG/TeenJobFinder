@@ -79,10 +79,13 @@
                             </button>
                         </div>
                         <div class="mt-4 px-4 h-full overflow-auto">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="bg-violet-600 dark:bg-violet-700 hover:bg-violet-800 p-4 cursor-pointer rounded-md border border-violet-900 transition-colors duration-300">
-                                    <h3 class="text-lg font-semibold text-white mb-2">Filter example</h3>
-                                </div>
+                            <div x-show="activeTab === 'jobs'" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                @foreach( $tags as $tag)
+                                    <x-post.filter tag="{{ $tag->tag }}" />
+                                @endforeach
+                            </div>
+                            <div x-show="activeTab === 'seeks'" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <h1 class="text-gray-600 text-lg">There are no filters for this section</h1>
                             </div>
                         </div>
                     </div>
