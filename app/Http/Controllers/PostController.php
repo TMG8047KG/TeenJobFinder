@@ -18,10 +18,19 @@ class PostController extends Controller
         return view('post.options');
     }
 
-    public function posts()
+    public function posts(Request $request)
     {
-        $post = Post::all();
-        return view('post.main', ['posts' => $post]);
+        $query = $request->input('query');
+
+        if ($query) {
+            $posts = Post::where('title', 'like', '%' . $query . '%')
+                ->orWhere('description', 'like', '%' . $query . '%')
+                ->get();
+        } else {
+            $posts = Post::all();
+        }
+
+        return view('post.main', ['posts' => $posts]);
     }
 
     public function post($id)
@@ -78,11 +87,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $posts = Post::where('title', 'like', '%' . $query . '%')
-            ->orWhere('description', 'like', '%' . $query . '%')
-            ->get();
-
-        return view('home', compact('posts'));
+        return redirect()->route('jobs', ['query' => $query]);
     }
 
 }

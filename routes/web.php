@@ -66,3 +66,4 @@ Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 Route::get('/posts/{id}', [PostController::class, 'post'])->name('post.show');
 Route::post('/posts/{id}', [MarksController::class, 'action']);
 Route::get('/search', [PostController::class, 'search'])->name('search');
+Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
