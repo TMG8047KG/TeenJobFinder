@@ -19,27 +19,25 @@
                 </div>
                 <input type="text" class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-600 focus:ring-violet-700" placeholder="Search for a job...">
             </div>
-            {{--            <button class="bg-violet-700 text-white rounded-xl px-4 py-2 shadow-md hover:bg-violet-600 transition duration-200" @click="filters = !filters" type="button">--}}
-            {{--                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">--}}
-            {{--                    <path fill-rule="evenodd" d="M3.5 5.5A2.5 2.5 0 016 3h8a2.5 2.5 0 012.5 2.5v.607a1.5 1.5 0 01-.44 1.06l-4.56 4.557a1.5 1.5 0 00-.44 1.06V16.5a1.5 1.5 0 11-3 0v-3.716a1.5 1.5 0 00-.44-1.06l-4.56-4.557A1.5 1.5 0 013.5 6.107V5.5z" clip-rule="evenodd" />--}}
-            {{--                </svg>--}}
-            {{--            </button>--}}
         </div>
 
         <!-- Recommended Jobs Section -->
         <div class="p-3 space-y-4 z-0">
             <h4 class="font-semibold text-white dark:text-gray-900 px-2">Recommended Jobs</h4>
             <div class="flex-grow flex items-center justify-center">
-                <div class="w-full h-full flex items-center justify-center shadow-lg bg-white dark:bg-gray-800 rounded-lg">
-                    @forelse($posts as $post)
-                        <x-recommended-job id="{{ $post->id }}" title="{{ $post->title }}" name="{{ $post->user->name }}" work_time="{{ $post->work_time }}" salary="{{ $post->salary }}"/>
-                    @empty
-                        <div class="flex-grow flex items-center justify-center" style="min-height: 300px; max-height: 400px;">
+                @if($posts->isEmpty())
+                    <div class="w-full h-64 flex items-center justify-center shadow-lg bg-white dark:bg-gray-800 rounded-lg">
                         <div class="text-violet-600 dark:text-violet-700 font-semibold text-xl">
-                            Nothing to Recommend
+                            No recommended jobs yet
                         </div>
-                    @endforelse
-                </div>
+                    </div>
+                @else
+                    <div class="w-full flex overflow-x-auto space-x-4">
+                        @foreach($posts as $post)
+                            <x-recommended-job id="{{ $post->id }}" title="{{ $post->title }}" name="{{ $post->user->name }}" work_time="{{ $post->work_time }}" salary="{{ $post->salary }}"/>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -52,34 +50,6 @@
                     <p class="text-xs text-gray-500 mt-1">Job Description</p>
                 </div>
             </div>
-        </div>
-
-        <!-- Filters Sidebar -->
-        <div x-show="filters" x-cloak class="fixed inset-0 z-50 overflow-hidden">
-            <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
-            <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-                <div class="w-screen max-w-md" @click.away="filters = false">
-                    <div class="h-full flex flex-col py-6 bg-white shadow-xl">
-                        <div class="flex items-center justify-between px-4">
-                            <h2 class="text-xl font-semibold text-blue-700">Filters</h2>
-                            <button class="text-gray-500 hover:text-gray-700" @click="filters = !filters">
-                                <span class="sr-only">Close</span>
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="mt-4 px-4 h-full overflow-auto">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer rounded-md border border-gray-300 transition-colors duration-300">
-                                    <h3 class="text-lg font-semibold text-blue-700 mb-2">Filter example</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </div>
 </x-layout>
