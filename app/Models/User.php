@@ -49,6 +49,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
     public function company()
     {
         return $this->hasOne(Company::class);

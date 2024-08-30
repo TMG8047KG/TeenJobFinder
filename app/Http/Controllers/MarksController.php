@@ -17,6 +17,8 @@ class MarksController extends Controller
         }else{
             Marks::find($save[0]->id)->delete();
         }
+        $user = auth()->user()->username;
+        $post->user->notifications()->create(['text' => "$user liked your post! Post id: $post->id"]);
         return redirect()->back()->with('saved', 'Saved successfully!');
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MarksController;
 use App\Http\Controllers\UserController;
@@ -26,9 +27,7 @@ Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 Route::get('/posts/{id}', [PostController::class, 'post']);
 Route::post('/posts/{id}', [MarksController::class, 'action']);
 
-Route::get('/notifications', function () {
-    return view('notifications');
-})->name('notifications');
+
 
 Route::middleware([isUser::class])->group(function () {
     //Profile actions
@@ -36,6 +35,8 @@ Route::middleware([isUser::class])->group(function () {
     Route::post('/profile/logout', [UserController::class, 'logout'])->name('profile.logout');
     Route::get('/profile/edit', [UserController::class, 'editProfileView'])->name('profile_edit');
     Route::post('/profile/edit', [UserController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
 
     //Post creation
     Route::get('/post/options', [PostController::class, 'index'])->name('post.options');

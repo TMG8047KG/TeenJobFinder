@@ -26,7 +26,7 @@ class CompanyController extends Controller
         ]);
 
         auth()->user()->company()->create($data);
-
+        auth()->user()->notifications()->create(['text' => "Successfully created your company account!"]);
         return redirect('/post/create/company');
     }
     public function edit()

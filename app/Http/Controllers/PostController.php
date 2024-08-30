@@ -70,9 +70,12 @@ class PostController extends Controller
             'work_time' => 'required',
             'salary' => 'min:2',
         ]);
-        $post = auth()->user()->posts()->create($data);
+        $user = Auth::user();
+        $post = $user->posts()->create($data);
         $post->categories()->attach(Category::findOrFail(1));
         $post->tags()->attach(Tag::findOrFail(1));
+        $user->notifications()->create(['text' => "Post created!\nPost id: $post->id"]);
+
 
         return redirect('/posts');
     }
@@ -91,6 +94,7 @@ class PostController extends Controller
         $user->save();
         $post = $user->posts()->create($data);
         $post->categories()->attach(Category::findOrFail(2));
+        $user->notifications()->create(['text' => "Post created!\nPost id: $post->id"]);
 
         return redirect('/posts');
     }

@@ -41,7 +41,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create($data);
-
+        $user->notifications()->create(['text' => "You successfully registered!"]);
         Auth::login($user);
 
         return redirect('/profile');
@@ -62,7 +62,7 @@ class UserController extends Controller
                 'email' => "Incorrect email or password"
             ]);
         }
-
+        auth()->user()->notifications()->create(['text' => "You successfully logged in!"]);
         $request->session()->regenerate();
 
         return redirect('/profile');
