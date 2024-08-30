@@ -35,8 +35,8 @@ class UserController extends Controller
     public function register(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         $data = $request->validate([
-            'username' => ['required'],
-            'email' => ['required', 'email'],
+            'username' => ['required', 'unique:users'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
         ]);
 
