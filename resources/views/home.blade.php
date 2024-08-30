@@ -21,9 +21,9 @@
             </form>
         </div>
 
-        <!-- Recommended Jobs Section -->
+        <!-- Recent Jobs Section -->
         <div class="p-3 space-y-4 z-0">
-            <h4 class="font-semibold text-white dark:text-gray-900 px-2">Recommended Jobs</h4>
+            <h4 class="font-semibold text-white dark:text-gray-900 px-2">Recent Jobs</h4>
             <div class="flex-grow flex items-center justify-center">
                 @if($posts->isEmpty())
                     <div class="w-full h-64 flex items-center justify-center shadow-lg bg-white dark:bg-gray-800 rounded-lg">
@@ -42,7 +42,7 @@
         </div>
 
         <!-- "For You" Section -->
-        <h4 class="font-semibold text-white dark:text-gray-900 px-3">For You</h4>
+        <h4 class="font-semibold text-white dark:text-gray-900 px-3">Recommended Jobs</h4>
         <div class="grid grid-cols-1 gap-4 px-3 pb-6">
             <div class="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-4">
                 <div class="flex flex-col justify-center w-full">
