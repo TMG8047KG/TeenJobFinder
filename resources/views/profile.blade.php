@@ -12,7 +12,7 @@
                 <div class="rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800">
                     @cannot('createCompany')
                         <div class="absolute top-2 right-2" style="z-index: 1;">
-                            <a href="/company/dashboard"> <!-- assuming the route is /company_dashboard -->
+                            <a href="/company/dashboard">
                                 <button class="bg-transparent text-white hover:bg-violet-800 transition duration-200 px-5 py-2 rounded-lg flex items-center w-full justify-center" style="z-index: 1;">
                                     <svg id="navigate-icon" fill="none" viewBox="0 0 24 24" class="h-6 w-6 text-violet-600 dark:text-violet-700 cursor-pointer">
                                         <path fill="currentColor" d="M14.293 2.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L16.586 8H5a1 1 0 0 1 0-2h11.586l-2.293-2.293a1 1 0 0 1 0-1.414zm-4.586 10a1 1 0 0 1 0 1.414L7.414 16H19a1 1 0 1 1 0 2H7.414l2.293 2.293a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0z"/>
@@ -74,7 +74,7 @@
                                 </button>
                             </div>
 
-                            <div class="px-2 py-3 h-auto overflow-y-auto">
+                            <div class="px-2 py-3 h-40 overflow-y-auto">
                                 <div x-show="tab === 'favorites'" x-cloak class="space-y-2">
                                     @if($favorites->isEmpty())
                                         <div class="text-center text-gray-500 dark:text-gray-400">

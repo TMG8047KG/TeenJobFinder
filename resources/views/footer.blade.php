@@ -40,11 +40,6 @@
                         <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">ChatGPT</a></li>
                     </ul>
                 </div>
-                <div class="col-span-full flex justify-center mt-0">
-                    <a href="/profile" class="bg-violet-600 dark:bg-violet-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">
-                        Back to Profile
-                    </a>
-                </div>
             </div>
         </div>
     </footer>
