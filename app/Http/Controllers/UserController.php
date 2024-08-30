@@ -102,15 +102,18 @@ class UserController extends Controller
         ]);
 
         $user = Auth::user();
+
         $user->username = $request->username;
         $user->email = $request->email;
+//        $user->phone = $request->phone;
+//        $user->age = $request->age;
+//        $user->address = $request->address;
 
-        if ($request->filled('password')) {
+        $user->when(filled($request->password), function ($user) use ($request) {
             $user->password = Hash::make($request->password);
-        }
+        });
 
-        // Handle profile photo upload
-        if ($request->hasFile('photo')) {
+        $user->when($request->hasFile('photo'), function ($user) use ($request) {
             // Delete the old photo if exists
             if ($user->photo && \Storage::exists('public/' . $user->photo)) {
                 \Storage::delete('public/' . $user->photo);
@@ -119,9 +122,10 @@ class UserController extends Controller
             // Store the new photo
             $path = $request->file('photo')->store('profile_photos', 'public');
             $user->photo = $path;
-        }
+        });
 
-        $user->bio = $request->bio;
+        $user->bio = $request->filled('bio') ? $request->bio : null;
+
         $user->save();
 
         return redirect()->route('profile')->with('status', 'Profile updated successfully!');
