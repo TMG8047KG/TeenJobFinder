@@ -44,7 +44,25 @@
                                    class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
                             <small class="text-gray-600 dark:text-gray-400">Leave blank if you don't want to change it.</small>
                         </div>
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                            <label for="age" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Age:</label>
+                            <input type="number" id="age" name="age" value="{{ $user->age }}"
+                                   class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
+                        </div>
 
+                        <!-- Location -->
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                            <label for="location" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Location:</label>
+                            <input type="text" id="location" name="location" value="{{ $user->location }}"
+                                   class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
+                            <label for="phone" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Phone:</label>
+                            <input type="tel" id="phone" name="phone" value="{{ $user->phone }}"
+                                   class="bg-white dark:bg-gray-700 mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-violet-700 focus:ring-violet-700 sm:text-sm" />
+                        </div>
                         <!-- Bio -->
                         <div class="mt-4 max-w-2xl text-sm text-gray-700 dark:text-gray-300">
                             <label for="bio" class="block text-sm font-medium text-gray-800 dark:text-gray-300">Bio:</label>
