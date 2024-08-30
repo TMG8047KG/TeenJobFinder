@@ -103,12 +103,16 @@
         <!-- "For You" Section -->
         <h4 class="font-semibold text-white dark:text-gray-900 px-3">Recommended Jobs</h4>
         <div class="grid grid-cols-1 gap-4 px-3 pb-6">
-            <div class="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-4">
-                <div class="flex flex-col justify-center w-full">
-                    <h2 class="text-sm font-medium text-violet-600">Job Example</h2>
-                    <p class="text-xs text-gray-500 mt-1">Job Description</p>
+            @if($recommendedPost)
+                <div class="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-4">
+                    <div class="flex flex-col justify-center w-full">
+                        <h2 class="text-sm font-medium text-violet-600">{{ $recommendedPost->title }}</h2>
+                        <p class="text-xs text-gray-500 mt-1">{{ $recommendedPost->description }}</p>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="text-white dark:text-gray-900">No recommended jobs for you yet.</div>
+            @endif
         </div>
     </div>
 </x-layout>

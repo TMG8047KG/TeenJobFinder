@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Marks;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
@@ -116,4 +117,16 @@ class PostController extends Controller
         return view('search_results', ['posts' => $posts, 'query' => $query]);
     }
 
+    public function home()
+    {
+        $userId = Auth::id();
+        $savedPosts = Marks::where('user_id', $userId)->with('post')->get();
+
+        $recommendedPost = $savedPosts->isNotEmpty() ? $savedPosts->random()->post : null;
+
+        return view('home', [
+            'recommendedPost' => $recommendedPost,
+            'posts' => Post::latest()->take(10)->get(),
+        ]);
+    }
 }
