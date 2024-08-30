@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pb-12 h-full">
+            <div class="pb-12 h-full bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
                 <div class="h-full px-2 py-2 space-y-2">
                     @if($notifications->count() <= 0)
                         <span class="text-gray-600 font-semibold text-xl">You don't have any notifications!</span>

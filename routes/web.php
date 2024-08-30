@@ -37,6 +37,9 @@ Route::middleware([isUser::class])->group(function () {
     Route::post('/profile/edit', [UserController::class, 'updateProfile'])->name('profile.update');
 
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
+    Route::get('/posts/{id}/edit', [PostController::class, 'editView']);
+    Route::post('/posts/{id}/edit', [PostController::class, 'edit']);
+    Route::post('/posts/{id}/delete', [PostController::class, 'delete']);
 
     //Post creation
     Route::get('/post/options', [PostController::class, 'index'])->name('post.options');
@@ -45,6 +48,9 @@ Route::middleware([isUser::class])->group(function () {
     Route::middleware([CompanyPost::class])->group(function () {
         Route::get('/post/create/company', [PostController::class, 'companyForm']);
         Route::post('/post/create/company', [PostController::class, 'listing']);
+
+
+
         Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company.dashboard');
         Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
         Route::post('/company/update', [CompanyController::class, 'update'])->name('company.update');

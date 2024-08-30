@@ -1,15 +1,10 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\Type;
+
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -20,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class)->constrained();
             $table->string('title');
             $table->text('skills');
             $table->text('description');
             $table->text('work_time')->nullable();
             $table->integer("salary")->nullable();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

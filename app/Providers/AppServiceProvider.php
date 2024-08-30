@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::define('deletePost', [PostPolicy::class, 'delete']);
         Gate::define('updatePost', [PostPolicy::class, 'update']);
         Gate::define('createCompany', [CompanyPolicy::class, 'create']);
         $posts = Post::all();
