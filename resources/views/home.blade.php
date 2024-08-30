@@ -87,7 +87,7 @@
                 @if($posts->isEmpty())
                     <div class="w-full h-64 flex items-center justify-center shadow-lg bg-white dark:bg-gray-800 rounded-lg">
                         <div class="text-violet-600 dark:text-violet-700 font-semibold text-xl">
-                            No recommended jobs yet
+                            No recents yet
                         </div>
                     </div>
                 @else
