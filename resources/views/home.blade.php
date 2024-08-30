@@ -1,5 +1,20 @@
 <x-layout>
-    <div x-data="{ filters: false }" class="flex flex-col h-screen max-h-screen overflow-y-auto bg-gradient-to-r from-violet-600 dark:from-violet-900 via-violet-600 dark:via-violet-800 to-violet-500 dark:to-violet-700">
+    <div
+        x-data="{
+            query: '',
+            results: [],
+            showResults: false,
+            showSuggestions: false,
+            async fetchSuggestions() {
+                if (this.query.length > 1) {
+                    const response = await fetch(`/search?query=${this.query}`);
+                    this.results = await response.json();
+                } else {
+                    this.results = [];
+                }
+            }
+        }"
+        class="flex flex-col h-screen max-h-screen overflow-y-auto bg-gradient-to-r from-violet-600 dark:from-violet-900 via-violet-600 dark:via-violet-800 to-violet-500 dark:to-violet-700">
 
         <!-- Header Section -->
         <div class="px-3 pt-6 pb-3 rounded-lg flex items-center space-x-2 w-full">
@@ -10,15 +25,59 @@
         </div>
 
         <!-- Search and Filters -->
-        <div class="flex items-center justify-between mt-3 px-3 z-10 space-x-2">
-            <form action="{{ route('search') }}" method="GET" class="relative w-full">
-                <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pr-3">
+        <div class="flex items-center justify-between mt-3 px-3 z-10 space-x-2 relative w-full">
+            <form
+                @submit.prevent="showSuggestions = false; showResults = true"
+                class="relative w-full">
+                <div class="absolute inset-y-0 end-0 flex items-center pr-3">
                     <svg class="h-5 w-5 text-gray-400 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
-                <input name="query" type="text" class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-600 focus:ring-violet-700" placeholder="Search for a job...">
+                <input
+                    type="text"
+                    x-model="query"
+                    @input.debounce.500ms="fetchSuggestions"
+                    @focus="showSuggestions = true"
+                    @blur="setTimeout(() => showSuggestions = false, 200)"
+                    class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-400 focus:ring-violet-700"
+                    placeholder="Search for a job...">
+
+                <!-- Suggestions Dropdown -->
+                <div
+                    x-show="showSuggestions && results.length > 0"
+                    class="absolute mt-1 w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg z-10">
+                    <ul>
+                        <template x-for="result in results" :key="result.id">
+                            <li
+                                @click="query = result.title; showSuggestions = false"
+                                class="px-4 py-2 cursor-pointer hover:bg-violet-100 dark:hover:bg-violet-900 text-gray-800 dark:text-gray-500">
+                                <span x-text="result.title"></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
             </form>
+        </div>
+
+        <!-- Search Results -->
+        <div x-show="showResults" class="mt-3 px-3">
+            <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
+                <h4 class="text-lg font-semibold text-violet-600 mb-4">Search Results</h4>
+                <ul>
+                    <template x-for="result in results" :key="result.id">
+                        <li class="mb-3">
+                            <a
+                                :href="`/posts/${result.id}`"
+                                class="block p-3 bg-violet-600 dark:bg-violet-800 rounded-lg hover:bg-violet-800">
+                                <h4 class="font-medium text-violet-900 dark:text-gray-900" x-text="result.title"></h4>
+                                <p class="text-sm text-violet-200" x-text="result.description"></p>
+                            </a>
+                        </li>
+                    </template>
+                    <li x-show="results.length === 0" class="text-gray-500">No results found.</li>
+                </ul>
+            </div>
         </div>
 
         <!-- Recent Jobs Section -->

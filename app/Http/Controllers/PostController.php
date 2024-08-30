@@ -94,13 +94,26 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
+    public function searchSuggestions(Request $request)
+    {
+        $query = $request->input('query');
+
+        $posts = Post::where('title', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->get(['id', 'title', 'description']);
+
+        return response()->json($posts);
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query');
+
         $posts = Post::where('title', 'like', '%' . $query . '%')
             ->orWhere('description', 'like', '%' . $query . '%')
             ->get();
-        return redirect()->route('jobs', ['query' => $query]);
+
+        return view('search_results', ['posts' => $posts, 'query' => $query]);
     }
 
 }

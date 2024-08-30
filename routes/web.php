@@ -66,5 +66,5 @@ Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 Route::post('/posts', [PostController::class, 'posts']);
 Route::get('/posts/{id}', [PostController::class, 'post'])->name('post.show');
 Route::post('/posts/{id}', [MarksController::class, 'action']);
-Route::get('/search', [PostController::class, 'search'])->name('search');
-
+Route::get('/search', [PostController::class, 'searchSuggestions'])->name('search.suggestions');
+Route::get('/posts/search', [PostController::class, 'search'])->name('search');
