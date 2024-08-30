@@ -78,6 +78,7 @@ class UserController extends Controller
     public function profile(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
         $user = Auth::user(); // Get the currently authenticated user
+
         return view('profile', compact('user')); // Pass the user data to the profile view
     }
     public function editProfileView(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
@@ -95,6 +96,9 @@ class UserController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
             'bio' => 'nullable|string|max:1000',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Validate photo
+            'phone' => 'required',
+            'age' => 'required',
+            'address' => 'required',
         ]);
 
         $user = Auth::user();
