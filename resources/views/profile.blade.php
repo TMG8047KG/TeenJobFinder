@@ -30,7 +30,7 @@
                     <div class="px-5 mt-20">
                         <h1 class="font-extrabold text-3xl text-center mb-2 text-violet-600 uppercase">{{ $user->username }}</h1>
                         <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $user->email }}</div>
-                        <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $user->age }}</div>
+                        <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $user->age }} years old</div>
                         <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $user->location }}</div>
                         <div class="text-gray-700 dark:text-gray-400 text-sm text-center">{{ $user->phone }}</div>
                         <div class="text-center text-gray-600 dark:text-gray-300 text-sm pt-2">
