@@ -13,15 +13,14 @@
                     <ul class="text-sm transition-all duration-500">
                         <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">Don't post fake posts</a></li>
                         <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">Show up on the jobs you accepted</a></li>
-                        <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">Don't hack pls</a></li>
+{{--                        <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">Don't hack pls</a></li>--}}
                     </ul>
                 </div>
                 <div class="lg:mx-auto text-left">
                     <h4 class="text-lg text-violet-600 font-medium mb-4">About us</h4>
                     <ul class="text-sm transition-all duration-500">
                         <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">We are students from PMG "academic Ivan Guzelev"</a></li>
-                        <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">В паралелките он топ</a></li>
-                        <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">НЗ</a></li>
+
                     </ul>
                 </div>
                 <div class="lg:mx-auto text-left">
@@ -37,7 +36,7 @@
                     <h4 class="text-lg text-violet-600 font-medium mb-4">With the support</h4>
                     <ul class="text-sm transition-all duration-500">
                         <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">Netea.bg</a></li>
-                        <li class="mb-3"><a class="text-gray-800 dark:text-gray-300">ChatGPT</a></li>
+
                     </ul>
                 </div>
             </div>
