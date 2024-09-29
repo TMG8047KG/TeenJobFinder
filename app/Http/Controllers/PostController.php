@@ -165,14 +165,22 @@ class PostController extends Controller
 
     public function home()
     {
-        $userId = Auth::id();
-        $savedPosts = Marks::where('user_id', $userId)->with('post')->get();
+        if (auth()->check()) {
+            $userId = Auth::id();
+            $savedPosts = Marks::where('user_id', $userId)->with('post')->get();
 
-        $recommendedPost = $savedPosts->isNotEmpty() ? $savedPosts->random()->post : null;
+            // Check if there are saved posts and randomly pick one for recommendation
+            $recommendedPost = $savedPosts->isNotEmpty() ? $savedPosts->random()->post : null;
+        } else {
+            $recommendedPost = null;
+        }
+
+        // Fetch the latest posts
+        $posts = Post::latest()->take(10)->get();
 
         return view('home', [
             'recommendedPost' => $recommendedPost,
-            'posts' => Post::latest()->take(10)->get(),
+            'posts' => $posts,
         ]);
     }
 }

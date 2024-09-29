@@ -11,9 +11,7 @@ use App\Http\Middleware\isUser;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [PostController::class, 'home'])->name('home');
 
 Route::get('/notifications', function () {
     return view('notifications');

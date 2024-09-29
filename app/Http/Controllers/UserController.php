@@ -71,6 +71,7 @@ class UserController extends Controller
         return redirect('/profile');
     }
 
+
     public function logout(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         Auth::logout();
