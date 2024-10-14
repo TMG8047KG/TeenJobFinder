@@ -14,7 +14,7 @@ class CompanyController extends Controller
     public function dashboard()
     {
         $company = auth()->user()->company;
-        return view('company_dashboard', compact('company'));
+        return view('company.company_dashboard', compact('company'));
     }
     public function store(Request $request){
         $data = $request->validate([
@@ -33,7 +33,7 @@ class CompanyController extends Controller
     {
         $user = Auth::user();
         $company = $user->company; // assuming the user has a company relationship
-        return view('company_edit', compact('company'));
+        return view('company.company_edit', compact('company'));
     }
     public function update(Request $request)
     {

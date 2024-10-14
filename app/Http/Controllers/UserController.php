@@ -38,6 +38,9 @@ class UserController extends Controller
             'username' => ['required', 'unique:users'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
+            'age' => ['required'],
+            'phone' => ['required', 'unique:users'],
+            'address' => ['nullable'],
         ]);
 
         $user = User::create($data);

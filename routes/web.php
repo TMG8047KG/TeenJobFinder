@@ -12,12 +12,6 @@ use App\Http\Middleware\isUser;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-
-
 Route::get('/footer', function () {
     return view('footer');
 })->name('footer');
@@ -26,8 +20,6 @@ Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 
 Route::get('/posts/{id}', [PostController::class, 'post']);
 Route::post('/posts/{id}', [MarksController::class, 'action']);
-
-
 
 Route::middleware([isUser::class])->group(function () {
     //Profile actions
@@ -49,8 +41,6 @@ Route::middleware([isUser::class])->group(function () {
         Route::get('/post/create/company', [PostController::class, 'companyForm']);
         Route::post('/post/create/company', [PostController::class, 'listing']);
 
-
-
         Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company.dashboard');
         Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
         Route::post('/company/update', [CompanyController::class, 'update'])->name('company.update');
@@ -67,18 +57,12 @@ Route::get('/profile/register', [UserController::class, 'registerView']);
 Route::post('/profile/login', [UserController::class, 'login']);
 Route::post('/profile/register', [UserController::class, 'register'])->name('register');
 
-
-
 Route::get('/posts', [PostController::class, 'posts'])->name('jobs');
 Route::post('/posts', [PostController::class, 'posts']);
 Route::get('/posts/{id}', [PostController::class, 'post'])->name('post.show');
 Route::post('/posts/{id}', [MarksController::class, 'action']);
 Route::get('/search', [PostController::class, 'searchSuggestions'])->name('search.suggestions');
 Route::get('/posts/search', [PostController::class, 'search'])->name('search');
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
 Route::get('/recommended-job', [PostController::class, 'getRecommendedJob']);
 Route::get('/', [PostController::class, 'home'])->name('home');

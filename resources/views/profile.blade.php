@@ -90,13 +90,8 @@
                                     @endif
                                 </div>
                                 <div x-show="tab === 'jobs'" x-cloak class="space-y-2">
-                                    <div class="bg-violet-600 dark:bg-violet-700 p-3 rounded-md shadow-md">
-                                        <div class="text-md font-semibold text-white">Job Example 1</div>
-                                        <div class="text-violet-300">Description of a job.</div>
-                                    </div>
-                                    <div class="bg-violet-600 dark:bg-violet-700 p-3 rounded-md shadow-md">
-                                        <div class="text-md font-semibold text-white">Job Example 2</div>
-                                        <div class="text-violet-300">Description of a job.</div>
+                                    <div class="text-center text-gray-500 dark:text-gray-400">
+                                        Coming soon!
                                     </div>
                                 </div>
                             </div>

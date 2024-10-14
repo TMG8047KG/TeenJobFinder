@@ -26,12 +26,12 @@
                     </div>
                     <div class="form-group mb-2 w-full">
                         <x-form.label for="skills">Skills</x-form.label>
-                        <x-form.textarea name="skills" rows="4">{{ $post->skills }}</x-form.textarea>
+                        <x-form.textarea name="skills" rows="6">{{ $post->skills }}</x-form.textarea>
                         <x-form.error name="skills"/>
                     </div>
                     <div class="form-group mb-2 w-full">
                         <x-form.label for="description">Description</x-form.label>
-                        <x-form.textarea name="description" rows="6">{{ $post->description }}</x-form.textarea>
+                        <x-form.textarea name="description" rows="8">{{ $post->description }}</x-form.textarea>
                         <x-form.error name="description"/>
                     </div>
                     <x-form.button>Submit</x-form.button>

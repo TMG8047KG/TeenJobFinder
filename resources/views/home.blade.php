@@ -38,14 +38,13 @@
                     type="text"
                     x-model="query"
                     @input.debounce.500ms="fetchSuggestions"
-                    @focus="showSuggestions = true"
+                    @focus="showSuggestions = true; showResults = false"
                     @blur="setTimeout(() => showSuggestions = false, 200)"
                     class="bg-white dark:bg-gray-800 shadow-lg rounded-xl border-0 p-3 w-full text-gray-700 dark:text-gray-400 focus:ring-violet-700"
                     placeholder="Search for a job...">
 
                 <!-- Suggestions Dropdown -->
-                <div
-                    x-show="showSuggestions && results.length > 0"
+                <div x-cloak x-show="showSuggestions && results.length > 0"
                     class="absolute mt-1 w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg z-10">
                     <ul>
                         <template x-for="result in results" :key="result.id">
@@ -61,7 +60,7 @@
         </div>
 
         <!-- Search Results -->
-        <div x-show="showResults" class="mt-3 px-3">
+        <div x-cloak x-show="showResults" class="mt-3 px-3">
             <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
                 <h4 class="text-lg font-semibold text-violet-600 mb-4">Search Results</h4>
                 <ul>
@@ -71,7 +70,7 @@
                                 :href="`/posts/${result.id}`"
                                 class="block p-3 bg-violet-600 dark:bg-violet-800 rounded-lg hover:bg-violet-800">
                                 <h4 class="font-medium text-violet-900 dark:text-gray-900" x-text="result.title"></h4>
-                                <p class="text-sm text-violet-200" x-text="result.description"></p>
+                                <p class="text-sm text-violet-200 line-clamp-2" x-text="result.description"></p>
                             </a>
                         </li>
                     </template>
@@ -81,7 +80,7 @@
         </div>
 
         <!-- Recent Jobs Section -->
-        <div class="p-3 space-y-4 z-0">
+        <div class="py-3 space-y-4 z-0">
             <h4 class="font-semibold text-white dark:text-gray-900 px-2">Recent Jobs</h4>
             <div class="flex-grow flex items-center justify-center">
                 @if($posts->isEmpty())
@@ -91,7 +90,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="w-full flex overflow-x-auto space-x-4">
+                    <div class="scrollbar-hidden first:pl-2 last:pr-2 w-full flex overflow-x-auto space-x-4">
                         @foreach($posts as $post)
                             <x-recommended-job id="{{ $post->id }}" title="{{ $post->title }}" name="{{ $post->user->name }}" work_time="{{ $post->work_time }}" salary="{{ $post->salary }}"/>
                         @endforeach

@@ -31,9 +31,9 @@
             </div>
 
             <div class="h-full pb-12 bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
-                <div class="h-full p-4">
+                <div class="h-full px-4">
                     <!-- Jobs Content -->
-                    <div x-show="activeTab === 'jobs'" x-cloak class="max-h-screen overflow-y-auto space-y-4">
+                    <div x-show="activeTab === 'jobs'" x-cloak class="max-h-screen py-4 overflow-y-auto space-y-4 scrollbar-hidden">
                         @if($jobs->count() <= 0)
                             <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
                         @endif
@@ -49,7 +49,7 @@
                         @endforeach
                     </div>
                     <!-- Seeks Content -->
-                    <div x-show="activeTab === 'seeks'" x-cloak class="max-h-screen overflow-y-auto space-y-5">
+                    <div x-show="activeTab === 'seeks'" x-cloak class="max-h-screen py-4 overflow-y-auto space-y-4 scrollbar-hidden">
                         @if($seekers->count() <= 0)
                             <span class="text-xl text-gray-700 dark:text-gray-400">Nothing to see here... yet</span>
                         @endif

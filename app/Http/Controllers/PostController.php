@@ -88,7 +88,8 @@ class PostController extends Controller
 
     public function companyForm()
     {
-        return view('post.company');
+        $tags = Tag::all();
+        return view('post.company', ['tags' => $tags]);
     }
     public function userForm()
     {
@@ -103,10 +104,13 @@ class PostController extends Controller
             'work_time' => ['required','lte:24'],
             'salary' => ['min:2'],
         ]);
+
+
         $user = Auth::user();
         $post = $user->posts()->create($data);
         $post->categories()->attach(Category::findOrFail(1));
-        $post->tags()->attach(Tag::findOrFail(1));
+        //TODO:Add the dropdown thing
+//        $post->tags()->attach(Tag::findOrFail(1));
         $user->notifications()->create(['text' => "Post created!\nPost id: $post->id"]);
 
 

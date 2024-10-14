@@ -1,15 +1,22 @@
 <x-layout class="bg-white dark:bg-gray-900">
-    <div class="h-screen px-3 pb-12">
-        <div class="relative bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
+    <div class="h-screen px-3 pb-12 bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
+        <div class="relative">
             <div class="sticky top-0 right-0">
                 <div class="inline-flex justify-center py-2 space-x-2">
+                    <div class="flex rounded-full h-9 w-9 bg-gray-300/50 dark:bg-gray-800/50 text-gray-600 justify-center">
+                        <a href="/posts" class="flex items-center">
+                            <svg class="h-8 w-8 text-gray-600 dark:text-gray-200 self-center" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z"></path>
+                            </svg>
+                        </a>
+                    </div>
                     @can('deletePost', $post)
                         <form method="post" action="/posts/{{ $post->id }}/delete">
                             @csrf
-                            <div class="flex rounded-full h-9 w-9 bg-gray-300/50 dark:bg-gray-800/50 text-gray-600 justify-center">
+                            <div class="flex rounded-full h-9 w-9 bg-gray-300/50 dark:bg-gray-800/50 text-gray-600 justify-center items-center">
                                 <button type="submit" class="flex justify-center">
-                                    <svg class="h-8 w-8 text-gray-600 dark:text-gray-200 self-center" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z"></path>
+                                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-200" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
                                     </svg>
                                 </button>
                             </div>
@@ -27,7 +34,7 @@
 
                 </div>
             </div>
-            <div class="pb-16 h-full ">
+            <div class="h-full pb-16 bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
                 <div class="h-full w-full max-w-md bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-3 pt-5">
                     <div>
                         <div class="relative w-full flex">

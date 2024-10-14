@@ -23,12 +23,12 @@
                     </div>
                     <div class="form-group mb-3">
                         <x-form.label for="phone">Phone</x-form.label>
-                        <x-form.input type="tel" name="phone" placeholder="+1 (123) 456-7890" :value="old('phone')"/>
+                        <x-form.input type="tel" name="phone" :value="old('phone')"/>
                         <x-form.error name="phone"/>
                     </div>
                     <div class="form-group mb-3">
                         <x-form.label for="age">Age</x-form.label>
-                        <x-form.input type="number" name="age" placeholder="25" :value="old('age')"/>
+                        <x-form.input type="number" name="age" placeholder="18" :value="old('age')"/>
                         <x-form.error name="age"/>
                     </div>
                     <div class="form-group mb-3">

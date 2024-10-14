@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('password');
             $table->text('bio')->nullable();
             $table->string('photo')->nullable();
-            $table->integer('age')->nullable();
+            $table->integer('age');
             $table->string('location')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->rememberToken();
             $table->timestamps();
         });
