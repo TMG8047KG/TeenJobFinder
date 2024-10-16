@@ -32,7 +32,16 @@
                         <x-form.textarea name="description" rows="6" placeholder="Job description..."/>
                         <x-form.error name="description"/>
                     </div>
-
+                    <div class="flex items-center mb-2 form-group space-x-1.5">
+                        <x-form.input name="tags[]" type="hidden"/>
+                        <x-form.input size="w-4 h-4" text_color="text-violet-600 dark:text-violet-600"  name="tags[]" type="checkbox" value="Remote"/>
+                        <x-form.label margin="ml-1" for="tags[]">Remote</x-form.label>
+                        <x-form.input size="w-4 h-4 ml-2" text_color="text-violet-600 dark:text-violet-600" name="tags[]" type="checkbox" value="Hybrid"/>
+                        <x-form.label margin="ml-1" for="tags[]">Hybrid</x-form.label>
+                        <x-form.input size="w-4 h-4 ml-2" text_color="text-violet-600 dark:text-violet-600" name="tags[]" type="checkbox" value="In-person"/>
+                        <x-form.label margin="ml-1" for="tags[]">In Person</x-form.label>
+                        <x-form.error name="tags[]"/>
+                    </div>
                     <x-form.button>Submit</x-form.button>
                 </form>
             </div>

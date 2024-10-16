@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="h-full pb-16 bg-white dark:bg-gray-900 inset-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3a3b3d_1px,transparent_1px)] [background-size:16px_16px]">
-                <div class="h-full w-full max-w-md bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-3 pt-5">
+                <div class="h-full w-full bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-3 pt-5">
                     <div>
                         <div class="relative w-full flex">
                             <div class="absolute flex justify-end w-full -mt-5">

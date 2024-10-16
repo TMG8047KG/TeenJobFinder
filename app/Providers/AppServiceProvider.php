@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Company;
 use App\Models\Post;
-use App\Models\User;
 use App\Policies\CompanyPolicy;
 use App\Policies\PostPolicy;
 use Illuminate\Support\Facades\Gate;

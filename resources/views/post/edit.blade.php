@@ -10,20 +10,28 @@
                         <x-form.input name="title" value="{{ $post->title }}"/>
                         <x-form.error name="title"/>
                     </div>
+                    @if($category->name == 'Job Offer')
                     <div class="form-group mb-2 w-full inline-flex space-x-2">
                         <div>
                             <x-form.label for="work_time">Time</x-form.label>
                             <x-form.input name="work_time" value="{{ $post->work_time }}" type="number" size="w-24"/>
                             <x-form.error name="work_time"/>
                         </div>
-                        @if($category->name == 'Job Offer')
-                            <div class="w-full">
-                                <x-form.label for="salary">Salary</x-form.label>
-                                <x-form.input name="salary" value="{{ $post->salary }}" type="number" placeholder="Leave empty if for negotiation"/>
-                                <x-form.error name="salary"/>
-                            </div>
-                        @endif
+                        <div class="w-full">
+                            <x-form.label for="salary">Salary</x-form.label>
+                            <x-form.input name="salary" value="{{ $post->salary }}" type="number" placeholder="Leave empty if for negotiation"/>
+                            <x-form.error name="salary"/>
+                        </div>
                     </div>
+                    @else
+                    <div class="form-group mb-2 w-full">
+                        <div>
+                            <x-form.label for="work_time">Time</x-form.label>
+                            <x-form.input name="work_time" value="{{ $post->work_time }}" type="number"/>
+                            <x-form.error name="work_time"/>
+                        </div>
+                    </div>
+                    @endif
                     <div class="form-group mb-2 w-full">
                         <x-form.label for="skills">Skills</x-form.label>
                         <x-form.textarea name="skills" rows="6">{{ $post->skills }}</x-form.textarea>
@@ -34,6 +42,18 @@
                         <x-form.textarea name="description" rows="8">{{ $post->description }}</x-form.textarea>
                         <x-form.error name="description"/>
                     </div>
+                    @if($category->name == 'Job Offer')
+                        <div class="flex items-center mb-2 form-group space-x-1.5">
+                            <x-form.input name="tags[]" type="hidden"/>
+                            <x-form.input size="w-4 h-4" text_color="text-violet-600 dark:text-violet-600"  name="tags[]" type="checkbox" value="Remote"/>
+                            <x-form.label margin="ml-1" for="tags[]">Remote</x-form.label>
+                            <x-form.input size="w-4 h-4 ml-2" text_color="text-violet-600 dark:text-violet-600" name="tags[]" type="checkbox" value="Hybrid"/>
+                            <x-form.label margin="ml-1" for="tags[]">Hybrid</x-form.label>
+                            <x-form.input size="w-4 h-4 ml-2" text_color="text-violet-600 dark:text-violet-600" name="tags[]" type="checkbox" value="In-person"/>
+                            <x-form.label margin="ml-1" for="tags[]">In Person</x-form.label>
+                            <x-form.error name="tags[]"/>
+                        </div>
+                    @endif
                     <x-form.button>Submit</x-form.button>
                 </form>
             </div>

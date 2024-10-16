@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use App\Models\Marks;
 use App\Models\Post;
 use App\Models\User;
@@ -70,7 +69,6 @@ class UserController extends Controller
 
         return redirect('/profile');
     }
-
 
     public function logout(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {

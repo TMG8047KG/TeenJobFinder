@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Company;
 use App\Models\Marks;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
-use function Laravel\Prompts\text;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
+use function Webmozart\Assert\Tests\StaticAnalysis\boolean;
 
 class PostController extends Controller
 {
@@ -56,9 +55,13 @@ class PostController extends Controller
     public function editView($id)
     {
         $post = Post::find($id);
+        $tags = array();
+        foreach ($post->tags as $tag) {
+            $tags[] = $tag->tag;
+        }
         $category = $post->categories()->first();
         if(auth()->user()->can('updatePost', $post)){
-            return view('post.edit', ['post' => $post, 'category' => $category]);
+            return view('post.edit', ['post' => $post, 'category' => $category, 'tags' => $tags]);
         }
         abort(403);
     }
@@ -71,7 +74,8 @@ class PostController extends Controller
             'description' => ['required'],
             'skills' => ['required'],
             'work_time' => ['required','lte:24'],
-            'salary' => ['min:3'],
+            'salary' => ['min:2'],
+            'tags' => ['required', 'array']
         ]);
 
         $user = Auth::user();
@@ -80,6 +84,12 @@ class PostController extends Controller
         $post->skills = $data['skills'];
         $post->work_time = $data['work_time'];
         $post->salary = $data['salary'];
+        DB::table('post_tags')->where('post_id', $post->id)->delete();
+        if($data['tags']!=null){
+            foreach($data['tags'] as $tag){
+                $post->tags()->attach(Tag::select('id')->where('tag', $tag)->first());
+            }
+        }
         $post->save();
         $user->notifications()->create(['text' => "Updated post with id: $post->id!"]);
 
@@ -97,20 +107,25 @@ class PostController extends Controller
     }
 
     public function listing(Request $request){
+
         $data = $request->validate([
             'title' => ['required'],
             'description' => ['required'],
             'skills' => ['required'],
             'work_time' => ['required','lte:24'],
             'salary' => ['min:2'],
+            'tags' => ['required', 'array']
         ]);
-
 
         $user = Auth::user();
         $post = $user->posts()->create($data);
         $post->categories()->attach(Category::findOrFail(1));
         //TODO:Add the dropdown thing
-//        $post->tags()->attach(Tag::findOrFail(1));
+        if($data['tags']!=null){
+            foreach($data['tags'] as $tag){
+                $post->tags()->attach(Tag::select('id')->where('tag', $tag)->first());
+            }
+        }
         $user->notifications()->create(['text' => "Post created!\nPost id: $post->id"]);
 
 

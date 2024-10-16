@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Http\Middleware;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CompanyMiddlewareTest extends TestCase

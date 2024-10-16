@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,11 +10,13 @@ class CompanyController extends Controller
     public function index(){
         return view('company.create');
     }
+
     public function dashboard()
     {
         $company = auth()->user()->company;
         return view('company.company_dashboard', compact('company'));
     }
+
     public function store(Request $request){
         $data = $request->validate([
             'name' => 'required',
@@ -29,12 +30,14 @@ class CompanyController extends Controller
         auth()->user()->notifications()->create(['text' => "Successfully created your company account!"]);
         return redirect('/post/create/company');
     }
+
     public function edit()
     {
         $user = Auth::user();
         $company = $user->company; // assuming the user has a company relationship
         return view('company.company_edit', compact('company'));
     }
+
     public function update(Request $request)
     {
 
