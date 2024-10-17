@@ -85,9 +85,11 @@
                                         </div>
                                     @else
                                         @foreach($favorites as $post)
-                                            <a href="/posts/{{ $post->id }}">
-                                                <x-profile.favorite title="{{ $post->title }}" description="{{ $post->description }}"/>
-                                            </a>
+                                            <div>
+                                                <a href="/posts/{{ $post->id }}">
+                                                    <x-profile.favorite title="{{ $post->title }}" description="{{ $post->description }}"/>
+                                                </a>
+                                            </div>
                                         @endforeach
                                     @endif
                                 </div>

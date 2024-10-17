@@ -17,7 +17,7 @@
 <a href="/posts/{{ $id }}" class="block w-full p-3 border-2 border-violet-500 dark:border-violet-700 rounded-lg shadow-lg transform transition-transform hover:scale-95 hover:bg-violet-100 dark:hover:bg-violet-900 bg-white dark:bg-gray-800 bg-opacity-90">
     <div class="flex items-center justify-between mb-2">
         <div class="text-lg font-bold text-violet-700 inline-flex">
-            <img class="h-8 w-8" src="{{ $photo }}">
+            <img class="h-8 w-8 rounded-full" src="{{ $photo }}">
             <p class="pl-2">{{ $name }}</p>
         </div>
         <div class="text-sm font-semibold text-gray-400 dark:text-gray-500">
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div>
-        <div class="text-center text-3xl font-bold text-violet-600 mb-1">
+        <div class="text-center text-3xl font-bold text-violet-600 mb-1 line-clamp-2">
             {{ $title }}
         </div>
         <div class="text-sm font-bold text-gray-500 dark:text-gray-300 mb-2 line-clamp-2">

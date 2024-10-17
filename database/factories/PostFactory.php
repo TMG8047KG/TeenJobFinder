@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,33 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->name(),
-            'skills' => fake()->text(),
-            'description'=> fake()->text(),
-            'user_id' => 1,
-            'tag_id' => 1,
+            'title' => fake()->jobTitle(),
+            'skills' => $this->generateSkillRequirements(),
+            'description' => fake()->text(),
+            'work_time' => fake()->randomNumber(1,24),
+            'salary' => fake()->numberBetween(1000, 10000),
+            'user_id' => User::all()->random()->id,
         ];
+    }
+
+    /**
+     * Generate a random skill requirement list.
+     *
+     * @return string
+     */
+    private function generateSkillRequirements(): string
+    {
+        $skills = [
+            'JavaScript', 'PHP', 'Laravel', 'React', 'Node.js',
+            'Project Management', 'Communication', 'Leadership',
+            'Problem Solving', 'UI/UX Design', 'Python', 'Java',
+            'C++', 'SQL', 'Data Analysis', 'SEO', 'Machine Learning'
+        ];
+
+        // Randomly pick 3-5 skills from the list
+        $selectedSkills = fake()->randomElements($skills, rand(3, 5));
+
+        // Return them as a comma-separated string
+        return implode(', ', $selectedSkills);
     }
 }

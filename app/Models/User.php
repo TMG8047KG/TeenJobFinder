@@ -75,4 +75,5 @@ class User extends Authenticatable
         return $this->photo ? asset('storage/' . $this->photo) : asset('https://avatar.iran.liara.run/username?username='. $this->username);
     }
 
+
 }

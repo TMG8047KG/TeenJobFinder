@@ -90,7 +90,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="scrollbar-hidden first:pl-2 last:pr-2 w-full flex overflow-x-auto space-x-4">
+                    <div class="scrollbar-hidden first:pl-2 last:pr-2 w-full flex overflow-x-auto space-x-3">
                         @foreach($posts as $post)
                             <x-recommended-job id="{{ $post->id }}" title="{{ $post->title }}" name="{{ $post->user->name }}" work_time="{{ $post->work_time }}" salary="{{ $post->salary }}"/>
                         @endforeach
