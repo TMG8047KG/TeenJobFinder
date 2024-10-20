@@ -39,10 +39,12 @@ class UserController extends Controller
             'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
             'age' => ['required'],
             'phone' => ['required', 'unique:users'],
-            'address' => ['nullable'],
+            'location' => ['nullable'],
         ]);
 
+
         $user = User::create($data);
+        $user->bio = "This user doesn't have a bio!";
         $user->notifications()->create(['text' => "You successfully registered!"]);
         Auth::login($user);
 
@@ -109,6 +111,7 @@ class UserController extends Controller
         $user->age = $request->age;
         $user->location = $request->location;
         $user->phone = $request->phone;
+        $user->bio = $request->bio;
 
         // Update the user's password if it's being changed
         if ($request->filled('password')) {

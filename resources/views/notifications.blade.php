@@ -3,8 +3,8 @@
         <div class="relative">
             <div class="sticky top-0 left-0 bg-white dark:bg-gray-800 w-full border-b border-purple-900 drop-shadow-lg">
                 <div class="p-3 inline-flex">
-                    <div class="h-10 w-10">
-                        <img class="rounded-full" src="{{ auth()->user()->photo_url }}" alt="profile photo">
+                    <div class="h-10 w-10 rounded-full">
+                        <img src="{{ auth()->user()->photo_url }}" alt="profile photo">
                     </div>
                     <div class="text-gray-600 text-2xl font-semibold pl-3 self-center">
                         {{ auth()->user()->username }}
