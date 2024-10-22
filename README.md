@@ -7,7 +7,7 @@ Made by couple of students from PMG "Akad. Ivan Gyuzelev" Gabrovo. Over the summ
 
 Credits:
 - Alexandar Goranov (Repo Creator)
-- Sofia-Emily Andreeva
+- Sofia-Emili Andreeva
 - Aleks Boevski
 - Irina Petrova
 - Kristian Stoianov
